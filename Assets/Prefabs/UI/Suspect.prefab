@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3618966131107462305}
   - component: {fileID: 5420618986600482052}
   m_Layer: 5
-  m_Name: Snitch
+  m_Name: Suspect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

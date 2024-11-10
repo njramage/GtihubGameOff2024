@@ -3,19 +3,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Snitch : MonoBehaviour
+public class Suspect : MonoBehaviour
 {
-    public Action<Snitch> OnSelect;
+    public Action<Suspect> OnSelect;
 
     [SerializeField]
     private List<Card> cards = new List<Card>();
 
-    private void Awake()
-    {
-        
-    }
-
-    public void SelectSnitch()
+    public void SelectSuspect()
     {
         OnSelect?.Invoke(this);
     }

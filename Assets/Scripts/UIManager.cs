@@ -7,13 +7,13 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField]
-    private GameObject silencePanel = null;
+    private GameObject selectPanel = null;
 
     [SerializeField]
     private GameObject infoPanel = null;
 
-    private List<Snitch> snitches = new List<Snitch>();
-    private Snitch selectedSnitch = null;
+    private List<Suspect> suspects = new List<Suspect>();
+    private Suspect selectedSuspect = null;
 
     private void Awake()
     {
@@ -26,22 +26,22 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        snitches = GetComponentsInChildren<Snitch>().ToList();
-        snitches.ForEach(snitch => snitch.OnSelect += OnSnitchSelect);
+        suspects = GetComponentsInChildren<Suspect>().ToList();
+        suspects.ForEach(suspect => suspect.OnSelect += OnSuspectSelect);
     }
 
-    public void OnSnitchSelect(Snitch snitch)
+    public void OnSuspectSelect(Suspect suspect)
     {
-        selectedSnitch = silencePanel.activeInHierarchy ? snitch : null;
+        selectedSuspect = selectPanel.activeInHierarchy ? suspect : null;
 
-        if (silencePanel != null)
+        if (selectPanel != null)
         {
-            silencePanel.SetActive(!silencePanel.activeInHierarchy);
+            selectPanel.SetActive(!selectPanel.activeInHierarchy);
         }
     }
 
     private void OnDestroy()
     {
-        snitches.ForEach(snitch => snitch.OnSelect -= OnSnitchSelect);
+        suspects.ForEach(suspect => suspect.OnSelect -= OnSuspectSelect);
     }
 }
