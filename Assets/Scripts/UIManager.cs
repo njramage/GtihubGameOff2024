@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -7,10 +6,12 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [SerializeField]
-    private GameObject selectPanel = null;
+    private GameObject suspectPanel = null;
+    [SerializeField]
+    private GameObject suspectPrefab = null;
 
     [SerializeField]
-    private GameObject infoPanel = null;
+    private GameObject selectPanel = null;
 
     private List<Suspect> suspects = new List<Suspect>();
     private Suspect selectedSuspect = null;
@@ -25,12 +26,21 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        suspects = GetComponentsInChildren<Suspect>().ToList();
-        suspects.ForEach(suspect => suspect.OnSelect += OnSuspectSelect);
     }
 
-    public void OnSuspectSelect(Suspect suspect)
+    public void Setup(List<SuspectData> suspectData)
+    {
+        foreach(var suspect in suspectData)
+        {
+            var instantiatedSuspect = Instantiate(suspectPrefab, suspectPanel.transform);
+            var suspectComponent = instantiatedSuspect.GetComponent<Suspect>();
+            suspects.Add(suspectComponent);
+            suspectComponent.OnSelect += OnSuspectSelect;
+            instantiatedSuspect.SetActive(true);
+        }
+    }
+
+    private void OnSuspectSelect(Suspect suspect)
     {
         selectedSuspect = selectPanel.activeInHierarchy ? suspect : null;
 
@@ -40,8 +50,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OnYesPressed()
+    {
+        if (selectedSuspect == null)
+        {
+            Debug.LogError("Something went wrong and selectedSuspect was null!");
+            return;
+        }
+    }
+
     private void OnDestroy()
     {
-        suspects.ForEach(suspect => suspect.OnSelect -= OnSuspectSelect);
+        foreach(var suspect in suspects)
+        {
+            if (suspect != null)
+            {
+                suspect.OnSelect -= OnSuspectSelect;
+            }
+        }
     }
 }
