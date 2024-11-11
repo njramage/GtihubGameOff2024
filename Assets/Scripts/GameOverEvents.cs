@@ -8,9 +8,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private Button playAgainButton;
 
-    private void Awake()
+    private void Start()
     {
-        document.GetComponent<UIDocument>();
+        document = GetComponent<UIDocument>();
 
         playAgainButton = document.rootVisualElement.Q("PlayAgainButton") as Button;
         playAgainButton.RegisterCallback<ClickEvent>(OnPlayAgainClick);
