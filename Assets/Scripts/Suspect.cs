@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Suspect : MonoBehaviour
 {
-    public Action<Suspect> OnSelect;
+    public Action<SuspectData> OnSelect;
 
     private SuspectData suspectData = null;
 
@@ -14,7 +14,7 @@ public class Suspect : MonoBehaviour
 
     public void SelectSuspect()
     {
-        OnSelect?.Invoke(this);
+        OnSelect?.Invoke(suspectData);
     }
 
     private void OnDestroy()

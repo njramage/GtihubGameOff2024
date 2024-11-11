@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    public Action<SuspectData> OnSelectYesPressed = null;
 
     [SerializeField]
     private GameObject suspectPanel = null;
@@ -14,7 +17,7 @@ public class UIManager : MonoBehaviour
     private GameObject selectPanel = null;
 
     private List<Suspect> suspects = new List<Suspect>();
-    private Suspect selectedSuspect = null;
+    private SuspectData selectedSuspect = null;
 
     private void Awake()
     {
@@ -26,6 +29,24 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (suspectPanel == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(suspectPanel)} assigned in Inspector!");
+            return;
+        }
+
+        if (suspectPrefab == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(suspectPrefab)} assigned in Inspector!");
+            return;
+        }
+
+        if (selectPanel == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(selectPanel)} assigned in Inspector!");
+            return;
+        }
     }
 
     public void Setup(List<SuspectData> suspectData)
@@ -36,27 +57,39 @@ public class UIManager : MonoBehaviour
             var suspectComponent = instantiatedSuspect.GetComponent<Suspect>();
             suspects.Add(suspectComponent);
             suspectComponent.OnSelect += OnSuspectSelect;
+            suspectComponent.SetupData(suspect);
             instantiatedSuspect.SetActive(true);
         }
     }
 
-    private void OnSuspectSelect(Suspect suspect)
+    private void OnSuspectSelect(SuspectData suspectData)
     {
-        selectedSuspect = selectPanel.activeInHierarchy ? suspect : null;
-
-        if (selectPanel != null)
+        if (selectedSuspect == suspectData)
         {
-            selectPanel.SetActive(!selectPanel.activeInHierarchy);
+            OnSelectNo();
+            return;
         }
+
+        selectedSuspect = suspectData;
+        selectPanel?.SetActive(true);
     }
 
-    public void OnYesPressed()
+    public void OnSelectYes()
     {
         if (selectedSuspect == null)
         {
-            Debug.LogError("Something went wrong and selectedSuspect was null!");
+            Debug.LogError($"Something went wrong and {nameof(selectedSuspect)} was null!");
             return;
         }
+
+        OnSelectYesPressed?.Invoke(selectedSuspect);
+        selectPanel?.SetActive(false);
+    }
+
+    public void OnSelectNo()
+    {
+        selectedSuspect = null;
+        selectPanel?.SetActive(false);
     }
 
     private void OnDestroy()
@@ -68,5 +101,7 @@ public class UIManager : MonoBehaviour
                 suspect.OnSelect -= OnSuspectSelect;
             }
         }
+
+        OnSelectYesPressed = null;
     }
 }

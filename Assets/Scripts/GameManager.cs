@@ -45,12 +45,14 @@ public class GameManager : MonoBehaviour
         RandomiseSuspects();
 
         uiManager.Setup(suspectData);
+        uiManager.OnSelectYesPressed += OnSuspectSelected;
     }
 
     private void RandomiseSuspects()
     {
         // More fine-tuning will likely need to go into this for difficulty reasons.
-        // Change as you see fit.
+        // Change as you see fit. Have not yet added functionality to set similar data on other suspects.
+        // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
             Location = (Location)Random.Range(0, 3),
@@ -77,6 +79,25 @@ public class GameManager : MonoBehaviour
             {
                 similarSuspectAdded = true;
             }
+        }
+    }
+
+    private void OnSuspectSelected(SuspectData suspectData)
+    {
+        Debug.Log($"Selected suspect with " +
+            $"Location: {suspectData.Location} " +
+            $"Tool: {suspectData.Tool} " +
+            $"Crime: {suspectData.Crime} " +
+            $"Feature: {suspectData.Feature}");
+
+        Debug.Log($"Correct suspect? {suspectData == correctSuspect}");
+    }
+
+    private void OnDestroy()
+    {
+        if (uiManager != null)
+        {
+            uiManager.OnSelectYesPressed -= OnSuspectSelected;
         }
     }
 }
