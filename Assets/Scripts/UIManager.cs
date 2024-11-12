@@ -1,22 +1,26 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    [SerializeField]
-    private GameObject selectPanel = null;
+    public Action<SuspectData> OnSelectYesPressed = null;
 
     [SerializeField]
-    private GameObject infoPanel = null;
+    private GameObject suspectPanel = null;
+    [SerializeField]
+    private GameObject suspectPrefab = null;
+
+    [SerializeField]
+    private GameObject selectPanel = null;
 
     [SerializeField]
     private GameObject pausePanel = null;
 
     private List<Suspect> suspects = new List<Suspect>();
-    private Suspect selectedSuspect = null;
+    private SuspectData selectedSuspect = null;
 
     private void Awake()
     {
@@ -29,37 +33,78 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        suspects = GetComponentsInChildren<Suspect>().ToList();
-        suspects.ForEach(suspect => suspect.OnSelect += OnSuspectSelect);
-    }
-
-    private void Update()
-    {
-        if (Input.GetAxis("Cancel") >= 0.5)
+        if (suspectPanel == null)
         {
-            if (pausePanel != null)
-            {
-                pausePanel.SetActive(!pausePanel.activeInHierarchy);
-            }
-            else
-            {
-                Debug.LogError("You have forgotten to assign the pause panel in the inspector");
-            }
+            Debug.LogError($"Cannot continue without {nameof(suspectPanel)} assigned in Inspector!");
+            return;
+        }
+
+        if (suspectPrefab == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(suspectPrefab)} assigned in Inspector!");
+            return;
+        }
+
+        if (selectPanel == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(selectPanel)} assigned in Inspector!");
+            return;
         }
     }
 
-    public void OnSuspectSelect(Suspect suspect)
+    public void Setup(List<SuspectData> suspectData)
     {
-        selectedSuspect = selectPanel.activeInHierarchy ? suspect : null;
-
-        if (selectPanel != null)
+        foreach(var suspect in suspectData)
         {
-            selectPanel.SetActive(!selectPanel.activeInHierarchy);
+            var instantiatedSuspect = Instantiate(suspectPrefab, suspectPanel.transform);
+            var suspectComponent = instantiatedSuspect.GetComponent<Suspect>();
+            suspects.Add(suspectComponent);
+            suspectComponent.OnSelect += OnSuspectSelect;
+            suspectComponent.SetupData(suspect);
+            instantiatedSuspect.SetActive(true);
         }
+    }
+
+    private void OnSuspectSelect(SuspectData suspectData)
+    {
+        if (selectedSuspect == suspectData)
+        {
+            OnSelectNo();
+            return;
+        }
+
+        selectedSuspect = suspectData;
+        selectPanel?.SetActive(true);
+    }
+
+    public void OnSelectYes()
+    {
+        if (selectedSuspect == null)
+        {
+            Debug.LogError($"Something went wrong and {nameof(selectedSuspect)} was null!");
+            return;
+        }
+
+        OnSelectYesPressed?.Invoke(selectedSuspect);
+        selectPanel?.SetActive(false);
+    }
+
+    public void OnSelectNo()
+    {
+        selectedSuspect = null;
+        selectPanel?.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        suspects.ForEach(suspect => suspect.OnSelect -= OnSuspectSelect);
+        foreach(var suspect in suspects)
+        {
+            if (suspect != null)
+            {
+                suspect.OnSelect -= OnSuspectSelect;
+            }
+        }
+
+        OnSelectYesPressed = null;
     }
 }

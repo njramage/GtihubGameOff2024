@@ -1,17 +1,24 @@
-using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Suspect : MonoBehaviour
 {
-    public Action<Suspect> OnSelect;
+    public Action<SuspectData> OnSelect;
 
-    [SerializeField]
-    private List<Card> cards = new List<Card>();
+    private SuspectData suspectData = null;
+
+    public void SetupData(SuspectData data)
+    {
+        suspectData = data;
+    }
 
     public void SelectSuspect()
     {
-        OnSelect?.Invoke(this);
+        OnSelect?.Invoke(suspectData);
+    }
+
+    private void OnDestroy()
+    {
+        OnSelect = null;
     }
 }
