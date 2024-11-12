@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 36514c0618d37457f8672cc6d4e669ba
+guid: 1b672812a5fe442c5a6f23cda3a02567
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3496130291854816728
-    second: detective-4787272_960_720_0
+      213: 1874508781651767270
+    second: Find_the_suspect_gameplay_background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: detective-4787272_960_720_0
+      name: Find_the_suspect_gameplay_background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 463
-        height: 720
+        width: 3840
+        height: 2160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 82ac289d5004b7fc0800000000000000
-      internalID: -3496130291854816728
+      spriteID: 6ef24ba2ec7930a10800000000000000
+      internalID: 1874508781651767270
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      detective-4787272_960_720_0: -3496130291854816728
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
