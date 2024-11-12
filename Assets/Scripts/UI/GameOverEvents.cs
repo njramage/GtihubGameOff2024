@@ -8,7 +8,7 @@ public class GameOverEvents : MonoBehaviour
 
     private Button playAgainButton;
 
-    private void Start()
+    private void Awake()
     {
         document = GetComponent<UIDocument>();
 
