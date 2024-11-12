@@ -10,10 +10,28 @@ VisualElement {
 
 .button {
     font-size: 40px;
-    width: 220px;
+    width: 300px;
     height: 60px;
     -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
     margin-top: 0;
     justify-content: flex-start;
     align-items: stretch;
+    background-color: gray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.button:hover {
+    color: gray;
+    background-color: white;
+}
+
+.container {
+    border-color: #686464;
+    border-width: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+
 }
