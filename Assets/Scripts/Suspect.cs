@@ -68,8 +68,11 @@ public class Suspect : MonoBehaviour
 
     private void TurnOnNextIndicator()
     {
-        indicators[progress].enabled = true;
-        progress++;
+        if (indicators.Count > progress)
+        {
+            indicators[progress].enabled = true;
+            progress++;
+        }
     }
 
     private void OnDestroy()
