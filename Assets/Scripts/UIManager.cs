@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject infoPanel = null;
 
+    [SerializeField]
+    private GameObject pausePanel = null;
+
     private List<Suspect> suspects = new List<Suspect>();
     private Suspect selectedSuspect = null;
 
@@ -28,6 +31,21 @@ public class UIManager : MonoBehaviour
 
         suspects = GetComponentsInChildren<Suspect>().ToList();
         suspects.ForEach(suspect => suspect.OnSelect += OnSuspectSelect);
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Cancel") >= 0.5)
+        {
+            if (pausePanel != null)
+            {
+                pausePanel.SetActive(!pausePanel.activeInHierarchy);
+            }
+            else
+            {
+                Debug.LogError("You have forgotten to assign the pause panel in the inspector");
+            }
+        }
     }
 
     public void OnSuspectSelect(Suspect suspect)
