@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -50,6 +51,12 @@ public class UIManager : MonoBehaviour
             Debug.LogError($"Cannot continue without {nameof(selectPanel)} assigned in Inspector!");
             return;
         }
+
+        if (pausePanel == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(pausePanel)} assigned in Inspector!");
+            return;
+        }
     }
 
     public void Setup(List<SuspectData> suspectData)
@@ -93,6 +100,16 @@ public class UIManager : MonoBehaviour
     {
         selectedSuspect = null;
         selectPanel?.SetActive(false);
+    }
+
+    public void OnReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnQuitApplication()
+    {
+        Application.Quit();
     }
 
     private void OnDestroy()
