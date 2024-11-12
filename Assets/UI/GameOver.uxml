@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainStyleSheet.uss?fileID=7433441132597879392&amp;guid=62ff74d9d74bc03e0adf60730ea3809f&amp;type=3#MainStyleSheet" />
+    <engine:VisualElement name="Container" style="flex-grow: 1; align-self: center; justify-content: center; align-items: stretch; align-content: flex-start;">
+        <engine:Label text="Game Over" name="Header" class="header" />
+        <engine:Button text="Play again" name="PlayAgainButton" style="width: 220px; height: 60px; align-self: center; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&quot;);" />
+    </engine:VisualElement>
+</engine:UXML>

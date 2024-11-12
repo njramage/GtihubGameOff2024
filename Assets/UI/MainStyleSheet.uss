@@ -1,0 +1,19 @@
+VisualElement {
+}
+
+.header {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
+    align-self: center;
+}
+
+.button {
+    font-size: 40px;
+    width: 220px;
+    height: 60px;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans");
+    margin-top: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+}
