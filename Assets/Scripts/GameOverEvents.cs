@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class GameOverEvents : MonoBehaviour
 {
     private UIDocument document;
 
