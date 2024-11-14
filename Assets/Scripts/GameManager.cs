@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -90,7 +91,13 @@ public class GameManager : MonoBehaviour
             $"Crime: {suspectData.Crime} " +
             $"Feature: {suspectData.Feature}");
 
-        Debug.Log($"Correct suspect? {suspectData == correctSuspect}");
+        bool correctGuess = suspectData == correctSuspect;
+        Debug.Log($"Correct suspect? {correctGuess}");
+
+        if (correctGuess)
+            SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
+        else
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 
     private void OnDestroy()
