@@ -29,6 +29,7 @@ public class Suspect : MonoBehaviour
         }
 
         suspectData = data;
+        GameManager.Instance.MergeEvent.AddListener(OnCardsCombined);
     }
 
     public void SelectSuspect()

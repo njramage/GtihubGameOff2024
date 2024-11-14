@@ -5,11 +5,23 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 {
     private Transform parentAfterDragging;
 
+    private Location? _location;
+    private Tool? _tool;
+    private Crime? _crime;
+    private Feature? _feature;
+
+    public void Setup(Location? location, Tool? tool, Crime? crime, Feature? feature)
+    {
+        _location = location;
+        _tool = tool;
+        _crime = crime;
+        _feature = feature;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Make sure that the card being dragged is always on top
         parentAfterDragging = transform.parent;
-        transform.SetParent(transform.root);
         transform.SetAsLastSibling();
     }
 
@@ -25,10 +37,16 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         EventSystem.current.RaycastAll(eventData, results);
         foreach (var ray in results)
         {
-            if (ray.gameObject != this.gameObject && ray.gameObject.CompareTag("Card"))
+            if (ray.gameObject.CompareTag("Card"))
             {
-                Debug.Log(ray.gameObject.name);
+                ray.gameObject.GetComponent<Card>().OnCardMerge();
             }
         }
+    }
+
+    public void OnCardMerge()
+    {
+        GameManager.Instance.MergeEvent.Invoke(_location, _tool, _crime, _feature);
+        Destroy(gameObject);
     }
 }
