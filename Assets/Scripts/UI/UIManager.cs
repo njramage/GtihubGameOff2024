@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
 
         selectedSuspect = suspectData;
         selectPanel?.SetActive(true);
+        selectPanel?.transform.SetAsLastSibling();
     }
 
     public void OnSelectYes()

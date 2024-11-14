@@ -891,8 +891,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 200
     m_Right: 200
-    m_Top: 25
-    m_Bottom: 25
+    m_Top: 15
+    m_Bottom: 20
   m_ChildAlignment: 4
   m_Spacing: 25
   m_ChildForceExpandWidth: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2217,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2233,7 +2233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 150
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2269,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -97.5
       objectReference: {fileID: 0}
     - target: {fileID: 265491733879499196, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

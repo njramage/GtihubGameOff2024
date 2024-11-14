@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public UnityEvent<Location?, Tool?, Crime?, Feature?> MergeEvent;
 
     [SerializeField]
     private GameObject uiManagerPrefab = null;
@@ -90,7 +94,7 @@ public class GameManager : MonoBehaviour
         suspectData.Add(correctSuspect);
 
         var similarSuspectAdded = false;
-        for (int i = 1; i < numberOfSuspects; i++) 
+        for (int i = 1; i < numberOfSuspects; i++)
         {
             var similarSuspect = similarSuspectAdded ? false : Random.Range(0, 9) % 2 == 0;
 
@@ -117,7 +121,13 @@ public class GameManager : MonoBehaviour
             $"Crime: {suspectData.Crime} " +
             $"Feature: {suspectData.Feature}");
 
-        Debug.Log($"Correct suspect? {suspectData == correctSuspect}");
+        bool correctGuess = suspectData == correctSuspect;
+        Debug.Log($"Correct suspect? {correctGuess}");
+
+        if (correctGuess)
+            SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
+        else
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 
     private void OnDestroy()
