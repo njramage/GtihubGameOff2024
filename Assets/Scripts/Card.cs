@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -10,12 +12,14 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Crime? _crime;
     private Feature? _feature;
 
-    public void Setup(Location? location, Tool? tool, Crime? crime, Feature? feature)
+    public void Setup(string cardName, Sprite sprite, Location? location, Tool? tool, Crime? crime, Feature? feature)
     {
         _location = location;
         _tool = tool;
         _crime = crime;
         _feature = feature;
+        gameObject.GetComponentInChildren<Image>().sprite = sprite;
+        gameObject.GetComponentInChildren<TextMeshPro>().text = cardName;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
