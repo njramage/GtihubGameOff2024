@@ -13,6 +13,9 @@ public class SlotMachine : MonoBehaviour
     private bool setupCorrectly = false;
     private int slotsToHide = 0;
 
+    [SerializeField]
+    private Button spinButton = null;
+
     [Header("Slots")]
     [SerializeField]
     private Slot locationSlot = null;
@@ -24,8 +27,14 @@ public class SlotMachine : MonoBehaviour
     private Slot featureSlot = null;
     private List<Slot> slots = new List<Slot>();
 
-    public void Setup(SuspectData suspectData, int hiddenSlots = 1)
-    {
+    public void Setup(SuspectData suspectData, int hiddenSlots = 1, bool spinAutomatically = false)
+    { 
+        if (spinButton == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(spinButton)} assigned in Inspector!");
+            return;
+        }
+
         if (locationSlot == null)
         {
             Debug.LogError($"Cannot continue without {nameof(locationSlot)} assigned in Inspector!");
@@ -60,10 +69,15 @@ public class SlotMachine : MonoBehaviour
         {
             locationSlot, toolSlot, crimeSlot, featureSlot
         };
-
         correctSuspect = suspectData;
         slotsToHide = hiddenSlots;
         setupCorrectly = true;
+
+        if (spinAutomatically)
+        {
+            spinButton.gameObject.SetActive(false);
+            Spin();
+        }
     }
 
     public async void Spin()
@@ -73,14 +87,18 @@ public class SlotMachine : MonoBehaviour
             return;
         }
 
+        spinButton.gameObject.SetActive(false);
+
         SetupSlots();
-        // Trigger animation (eventually)
+
+        // Trigger animation (eventually (hopefully))
 
         // Delay so the player can read clues (can be replaced later)
         await Task.Delay(3000);
 
         OnSpinComplete?.Invoke();
 
+        OnSpinComplete = null;
         Destroy(gameObject);
     }
 
@@ -132,7 +150,7 @@ public class SlotMachine : MonoBehaviour
 
         for (int i = 0; i < slotsToHide; i++)
         {
-            var slotToHide = Random.Range(0, 3);
+            var slotToHide = Random.Range(0, 4);
             if (hiddenSlots.Contains(slotToHide))
             {
                 i--;

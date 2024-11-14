@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
 
         slotMachine.OnSpinComplete += SetupUI;
-        slotMachine.Setup(correctSuspect);
+        slotMachine.Setup(correctSuspect, 3, true);
     }
 
     private void SetupUI()
@@ -86,10 +86,10 @@ public class GameManager : MonoBehaviour
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
-            Location = (Location)Random.Range(0, 3),
-            Tool = (Tool)Random.Range(0, 3),
-            Crime = (Crime)Random.Range(0, 3),
-            Feature = (Feature)Random.Range(0, 3)
+            Location = (Location)Random.Range(0, 4),
+            Tool = (Tool)Random.Range(0, 4),
+            Crime = (Crime)Random.Range(0, 4),
+            Feature = (Feature)Random.Range(0, 4)
         };
         suspectData.Add(correctSuspect);
 
@@ -100,10 +100,10 @@ public class GameManager : MonoBehaviour
 
             suspectData.Add(new SuspectData
             {
-                Location = (Location)Random.Range(0, 3),
-                Tool = (Tool)Random.Range(0, 3),
-                Crime = (Crime)Random.Range(0, 3),
-                Feature = (Feature)Random.Range(0, 3)
+                Location = (Location)Random.Range(0, 4),
+                Tool = (Tool)Random.Range(0, 4),
+                Crime = (Crime)Random.Range(0, 4),
+                Feature = (Feature)Random.Range(0, 4)
             });
 
             if (similarSuspect)
@@ -132,7 +132,10 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (slotMachine !)
+        if (slotMachine != null)
+        {
+            slotMachine.OnSpinComplete -= SetupUI;
+        }
 
         if (uiManager != null)
         {
