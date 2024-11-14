@@ -1,3 +1,11 @@
+public enum Type
+{
+    Location = 0,
+    Tool = 1,
+    Crime = 2,
+    Feature = 3
+}
+
 public enum Location
 {
     BowlingAlley = 0,
