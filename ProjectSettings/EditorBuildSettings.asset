@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Harrison_Test_Scene.unity
     guid: 4a9eefb954f3b4741ab30b84bd4fd9bf
   - enabled: 1
+    path: Assets/Scenes/GameWin.unity
+    guid: 958e78d2ed2c31d64b65183bebd436c7
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 831e1f1b7b4650c11b5c18410913295d
   m_configObjects:

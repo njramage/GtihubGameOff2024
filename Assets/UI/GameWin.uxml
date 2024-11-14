@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainStyleSheet.uss?fileID=7433441132597879392&amp;guid=62ff74d9d74bc03e0adf60730ea3809f&amp;type=3#MainStyleSheet" />
+    <engine:VisualElement style="flex-grow: 1; justify-content: flex-start; align-items: center; align-content: auto; align-self: auto; height: 100px; flex-basis: 0;">
+        <engine:VisualElement name="Container" class="container" style="flex-grow: 1; max-height: 200px; align-self: auto; align-items: center; align-content: auto; top: 35%;">
+            <engine:Label text="Criminal Found!" name="Header" class="header" style="align-content: auto; justify-content: flex-start; align-self: center; padding-top: 2px; margin-top: 2px; align-items: auto;" />
+            <engine:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: auto; align-self: auto; align-content: auto; height: 100%; width: 300px; min-width: auto; min-height: auto; max-height: 85px;">
+                <engine:Label text="Your time:" name="scoreTitle" enable-rich-text="false" class="header" style="justify-content: space-evenly; margin-bottom: 4px;" />
+                <engine:Label text="1:00" name="timeText" class="header" style="margin-bottom: 4px;" />
+            </engine:VisualElement>
+            <engine:Button text="Next Crime!" name="PlayAgainButton" class="button" style="width: 300px; height: 60px; align-self: center; margin-bottom: 0; margin-top: 0; border-bottom-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
