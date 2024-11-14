@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManagerPrefab: {fileID: 6084577235694451880, guid: d7d5cb81aa471d147ab17b15f72ec81f, type: 3}
+  slotMachinePrefab: {fileID: 397806476116998021, guid: f0e2032e5bd949f49b38aa8ec7e5368a, type: 3}
   numberOfSuspects: 6

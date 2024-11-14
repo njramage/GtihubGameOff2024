@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager = null;
 
     [SerializeField]
+    private GameObject slotMachinePrefab = null;
+    private SlotMachine slotMachine = null;
+
+    [SerializeField]
     private int numberOfSuspects = 6;
     private SuspectData correctSuspect = null;
     private List<SuspectData> suspectData = new List<SuspectData>();
@@ -34,6 +38,31 @@ public class GameManager : MonoBehaviour
 
     private void SetupGame()
     {
+        RandomiseSuspects();
+
+        SetupSlotMachine();
+    }
+
+    private void SetupSlotMachine()
+    {
+        if (slotMachinePrefab == null)
+        {
+            Debug.LogError($"Cannot setup game without {nameof(slotMachinePrefab)} assigned in Inspector!");
+            return;
+        }
+
+        if (slotMachine == null)
+        {
+            var spawnedSlotMachine = Instantiate(slotMachinePrefab, gameObject.transform);
+            slotMachine = spawnedSlotMachine.GetComponent<SlotMachine>();
+        }
+
+        slotMachine.OnSpinComplete += SetupUI;
+        slotMachine.Setup(correctSuspect, 3, true);
+    }
+
+    private void SetupUI()
+    {
         if (uiManagerPrefab == null)
         {
             Debug.LogError($"Cannot setup game without {nameof(uiManagerPrefab)} assigned in Inspector!");
@@ -46,8 +75,6 @@ public class GameManager : MonoBehaviour
             uiManager = spawnedUiManager.GetComponent<UIManager>();
         }
 
-        RandomiseSuspects();
-
         uiManager.Setup(suspectData);
         uiManager.OnSelectYesPressed += OnSuspectSelected;
     }
@@ -59,10 +86,10 @@ public class GameManager : MonoBehaviour
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
-            Location = (Location)Random.Range(0, 3),
-            Tool = (Tool)Random.Range(0, 3),
-            Crime = (Crime)Random.Range(0, 3),
-            Feature = (Feature)Random.Range(0, 3)
+            Location = (Location)Random.Range(0, 4),
+            Tool = (Tool)Random.Range(0, 4),
+            Crime = (Crime)Random.Range(0, 4),
+            Feature = (Feature)Random.Range(0, 4)
         };
         suspectData.Add(correctSuspect);
 
@@ -73,10 +100,10 @@ public class GameManager : MonoBehaviour
 
             suspectData.Add(new SuspectData
             {
-                Location = (Location)Random.Range(0, 3),
-                Tool = (Tool)Random.Range(0, 3),
-                Crime = (Crime)Random.Range(0, 3),
-                Feature = (Feature)Random.Range(0, 3)
+                Location = (Location)Random.Range(0, 4),
+                Tool = (Tool)Random.Range(0, 4),
+                Crime = (Crime)Random.Range(0, 4),
+                Feature = (Feature)Random.Range(0, 4)
             });
 
             if (similarSuspect)
@@ -105,6 +132,11 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (slotMachine != null)
+        {
+            slotMachine.OnSpinComplete -= SetupUI;
+        }
+
         if (uiManager != null)
         {
             uiManager.OnSelectYesPressed -= OnSuspectSelected;
