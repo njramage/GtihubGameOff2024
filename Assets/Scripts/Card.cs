@@ -41,9 +41,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         EventSystem.current.RaycastAll(eventData, results);
         foreach (var ray in results)
         {
-            if (ray.gameObject.CompareTag("Card"))
+            if (ray.gameObject != gameObject && ray.gameObject.CompareTag("Card"))
             {
                 ray.gameObject.GetComponent<Card>().OnCardMerge();
+                OnCardMerge();
             }
         }
     }
