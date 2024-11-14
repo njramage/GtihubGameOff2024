@@ -21,5 +21,14 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDragging);
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        foreach (var ray in results)
+        {
+            if (ray.gameObject != this.gameObject && ray.gameObject.CompareTag("Card"))
+            {
+                Debug.Log(ray.gameObject.name);
+            }
+        }
     }
 }
