@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 4869126733658066229}
   - component: {fileID: 2081784089319341244}
   m_Layer: 5
-  m_Name: Card
+  m_Name: 0_Knife
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,6 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac04bb55621ca7f5b3b3168bae2aebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  cardName: Kinfe
+  sprite: {fileID: 0}
+  category: 1
+  cardIndex: 0
 --- !u!114 &2081784089319341244
 MonoBehaviour:
   m_ObjectHideFlags: 0
