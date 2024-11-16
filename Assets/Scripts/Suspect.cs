@@ -42,10 +42,6 @@ public class Suspect : MonoBehaviour
     // so Suspect UI doesn't need to know about each card spawned?
     private void OnCardsCombined(Location? location, Tool? tool, Crime? crime, Feature? feature)
     {
-        Debug.Log($"{location} = {suspectData.Location}");
-        Debug.Log($"{tool} = {suspectData.Tool}");
-        Debug.Log($"{crime} = {suspectData.Crime}");
-        Debug.Log($"{feature} = {suspectData.Feature}");
         if (location != null && !locationMatched && location == suspectData.Location)
         {
             locationMatched = true;
