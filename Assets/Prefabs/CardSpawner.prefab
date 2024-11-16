@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7576770960651550856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7780719296046817346}
+  - component: {fileID: 1176097234218754422}
+  m_Layer: 5
+  m_Name: CardSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7780719296046817346
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576770960651550856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1176097234218754422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576770960651550856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de77a80f108c64d2a94bd9f2b4f1aec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationCards:
+  - {fileID: 8652733005390346509, guid: 6c018fa2141ddc319a18c205e6b120ce, type: 3}
+  - {fileID: 8652733005390346509, guid: 8f80dffd3d4803c089ba2b45697f05ff, type: 3}
+  - {fileID: 8652733005390346509, guid: ea5bf91e45a265e59b436cc008c06122, type: 3}
+  - {fileID: 8652733005390346509, guid: cbceb75d6284d3755a4f2a09a43e276f, type: 3}
+  toolCards:
+  - {fileID: 8652733005390346509, guid: 0e73aa5e34799caa9a1445e810f2cca0, type: 3}
+  - {fileID: 8652733005390346509, guid: e2ef2fc9e5c4b75bcae5a2ad80f605e4, type: 3}
+  - {fileID: 8652733005390346509, guid: 8a7bc68f524f03626ade43eadc3dc64d, type: 3}
+  - {fileID: 8652733005390346509, guid: c87346dca9b3b0742ae89fcbcf3d188b, type: 3}
+  crimeCards:
+  - {fileID: 8652733005390346509, guid: c7d5b1badfbd8fb4cbf4c54a1b26b086, type: 3}
+  - {fileID: 8652733005390346509, guid: 5bae9aa780933554ab3f1e5a9c28f8bc, type: 3}
+  - {fileID: 8652733005390346509, guid: 60324e9b971f553028917950df35de27, type: 3}
+  - {fileID: 8652733005390346509, guid: 20e8c9dabbf21a3d1a12629d634f7d3d, type: 3}
+  featureCards:
+  - {fileID: 8652733005390346509, guid: fa11707bbf3f77978a5d1e358f607a0f, type: 3}
+  - {fileID: 8652733005390346509, guid: fb7af06dfea96b0bfb24c4d4eb0b012d, type: 3}
+  - {fileID: 8652733005390346509, guid: 4ae644b57514070a387a827fbc0a3197, type: 3}
+  - {fileID: 8652733005390346509, guid: 02738cd23be5acf07806509842010438, type: 3}
+  timeBewteenSpawnSec: 3
+  numCardCategories: 4
