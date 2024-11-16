@@ -39,7 +39,6 @@ public class CardSpawner : MonoBehaviour
             spawnedCard.transform.position = cardSpawnPosition;
             yield return new WaitForSeconds(timeBewteenSpawnSec);
         }
-
     }
 
     void Start()

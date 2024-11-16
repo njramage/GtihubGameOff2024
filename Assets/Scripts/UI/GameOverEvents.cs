@@ -19,6 +19,6 @@ public class GameOverEvents : MonoBehaviour
     private void OnPlayAgainClick(ClickEvent clickEvent)
     {
         Debug.Log("Clicked play again");
-        SceneManager.LoadScene("Harrison_Test_Scene");
+        SceneManager.LoadScene("GameScene");
     }
 }
