@@ -144,25 +144,25 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.MergeEvent.AddListener(updateCorrectIndicators);
     }
 
-    private void updateCorrectIndicators(Location? location, Tool? tool, Crime? crime, Feature? feature)
+    private void updateCorrectIndicators(Location location, Tool tool, Crime crime, Feature feature)
     {
         var correctData = GameManager.Instance.correctSuspect;
-        if (location != null && location == correctData.Location)
+        if (location == correctData.Location)
         {
             correctIndicators.showCorrectIndicator(Category.Location);
         }
 
-        if (tool != null && tool == correctData.Tool)
+        if (tool == correctData.Tool)
         {
             correctIndicators.showCorrectIndicator(Category.Tool);
         }
 
-        if (crime != null && crime == correctData.Crime)
+        if (crime == correctData.Crime)
         {
             correctIndicators.showCorrectIndicator(Category.Crime);
         }
 
-        if (feature != null && feature == correctData.Feature)
+        if (feature == correctData.Feature)
         {
             correctIndicators.showCorrectIndicator(Category.Feature);
         }
