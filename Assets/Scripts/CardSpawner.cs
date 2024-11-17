@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cardTemplate;
+    private Card cardTemplate;
 
     [SerializeField]
     private float timeBewteenSpawnSec;
@@ -29,10 +28,9 @@ public class CardSpawner : MonoBehaviour
             int randomCard = Random.Range(1, numCardCategories);
             Vector3 cardSpawnPosition = new Vector3(randXPosition, transform.parent.position.y + 10,transform.parent.position.z);
             transform.position = cardSpawnPosition;
-            GameObject spawnedCard = Instantiate(cardTemplate, transform.parent);
+            Card spawnedCard = Instantiate(cardTemplate, transform.parent);
             spawnedCard.transform.position = cardSpawnPosition;
-            Card card = spawnedCard.GetComponent<Card>();
-            card.Setup(sprite: null, category: (Category)randomCardCategory, value: randomCard);
+            spawnedCard.Setup(sprite: null, category: (Category)randomCardCategory, value: randomCard);
             yield return new WaitForSeconds(timeBewteenSpawnSec);
         }
     }
