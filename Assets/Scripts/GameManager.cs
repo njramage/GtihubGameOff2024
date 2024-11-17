@@ -52,10 +52,10 @@ public class GameManager : MonoBehaviour
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
-            Location = (Location)Random.Range(1, 4),
-            Tool = (Tool)Random.Range(1, 4),
-            Crime = (Crime)Random.Range(1, 4),
-            Feature = (Feature)Random.Range(1, 4)
+            Location = (Location)Random.Range(1, 5),
+            Tool = (Tool)Random.Range(1, 5),
+            Crime = (Crime)Random.Range(1, 5),
+            Feature = (Feature)Random.Range(1, 5)
         };
         suspectData.Add(correctSuspect);
 
@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
 
             suspectData.Add(new SuspectData
             {
-                Location = (Location)Random.Range(1, 4),
-                Tool = (Tool)Random.Range(1, 4),
-                Crime = (Crime)Random.Range(1, 4),
-                Feature = (Feature)Random.Range(1, 4)
+                Location = (Location)Random.Range(1, 5),
+                Tool = (Tool)Random.Range(1, 5),
+                Crime = (Crime)Random.Range(1, 5),
+                Feature = (Feature)Random.Range(1, 5)
             });
 
             if (similarSuspect)

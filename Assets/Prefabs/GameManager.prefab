@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486036164221246664}
   - component: {fileID: 8873979646028287111}
+  - component: {fileID: 5595598500109461754}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,5 +45,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74dce06b28cef474a9fe8e4389ce3c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManagerPrefab: {fileID: 6084577235694451880, guid: d7d5cb81aa471d147ab17b15f72ec81f, type: 3}
+  MergeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  uiManagerPrefab: {fileID: 9112603903858948861, guid: d7d5cb81aa471d147ab17b15f72ec81f, type: 3}
   numberOfSuspects: 6
+--- !u!114 &5595598500109461754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482502370203644449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: e0cc4820f045ca32091ab4d10edc3a9e, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4311616ae67598960b7bc7ce515dd505, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080

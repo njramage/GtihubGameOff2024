@@ -253,35 +253,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6482502370203644449, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 339521107}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
---- !u!1 &339521106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6482502370203644449, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-  m_PrefabInstance: {fileID: 339521105}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &339521107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339521106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: e0cc4820f045ca32091ab4d10edc3a9e, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 4311616ae67598960b7bc7ce515dd505, type: 3}
-  m_SortingOrder: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
 --- !u!224 &392321523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7780719296046817346, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}

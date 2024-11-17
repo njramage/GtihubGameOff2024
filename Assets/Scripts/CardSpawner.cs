@@ -24,8 +24,8 @@ public class CardSpawner : MonoBehaviour
             Vector3 maxPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(SCREEN_WIDTH - MAGIC_RIGHT_NUMBER, 0, 0));
             Vector3 minPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(MAGIC_LEFT_NUMBER, 0, 0));
             float randXPosition = Random.Range(minPointBounds.x, maxPointBounds.x);
-            int randomCardCategory = Random.Range(0, numCardCategories - 1);
-            int randomCard = Random.Range(1, numCardCategories);
+            int randomCardCategory = Random.Range(0, numCardCategories);
+            int randomCard = Random.Range(1, numCardCategories + 1);
             Vector3 cardSpawnPosition = new Vector3(randXPosition, transform.parent.position.y + 10,transform.parent.position.z);
             transform.position = cardSpawnPosition;
             Card spawnedCard = Instantiate(cardTemplate, transform.parent);
