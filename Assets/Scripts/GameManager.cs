@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent<Location, Tool, Crime, Feature> MergeEvent;
 
     [SerializeField]
-    private GameObject uiManagerPrefab = null;
+    private UIManager uiManagerPrefab;
     private UIManager uiManager = null;
 
     [SerializeField]
@@ -34,16 +34,9 @@ public class GameManager : MonoBehaviour
 
     private void SetupGame()
     {
-        if (uiManagerPrefab == null)
-        {
-            Debug.LogError($"Cannot setup game without {nameof(uiManagerPrefab)} assigned in Inspector!");
-            return;
-        }
-
         if (uiManager == null)
         {
-            var spawnedUiManager = Instantiate(uiManagerPrefab, gameObject.transform);
-            uiManager = spawnedUiManager.GetComponent<UIManager>();
+            uiManager = Instantiate(uiManagerPrefab, gameObject.transform);
         }
 
         RandomiseSuspects();
