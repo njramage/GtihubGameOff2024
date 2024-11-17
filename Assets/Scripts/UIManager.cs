@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     protected UIDocument correctRevealIndicatorPanel;
 
-    public struct UIIndicators
+    private struct UIIndicators
     {
         private VisualElement locationIndicator;
         private VisualElement toolIndicator;
