@@ -29,7 +29,7 @@ VisualElement {
 }
 
 .container {
-    border-color: rgb(104, 100, 100);
+    border-color: #686464;
     border-width: 5px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.8);
