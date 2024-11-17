@@ -40,27 +40,27 @@ public class Suspect : MonoBehaviour
     // Example for now, not currently hooked up to anything.
     // Potentially hooked up to static Action on Cards, triggered when cards are combined,
     // so Suspect UI doesn't need to know about each card spawned?
-    private void OnCardsCombined(Location? location, Tool? tool, Crime? crime, Feature? feature)
+    private void OnCardsCombined(Location location, Tool tool, Crime crime, Feature feature)
     {
-        if (location != null && !locationMatched && location == suspectData.Location)
+        if (!locationMatched && location == suspectData.Location)
         {
             locationMatched = true;
             TurnOnNextIndicator();
         }
 
-        if (tool != null && !toolMatched && tool == suspectData.Tool)
+        if (!toolMatched && tool == suspectData.Tool)
         {
             toolMatched = true;
             TurnOnNextIndicator();
         }
 
-        if (crime != null && !crimeMatched && crime == suspectData.Crime)
+        if (!crimeMatched && crime == suspectData.Crime)
         {
             crimeMatched = true;
             TurnOnNextIndicator();
         }
 
-        if (feature != null && !featureMatched && feature == suspectData.Feature)
+        if (!featureMatched && feature == suspectData.Feature)
         {
             featureMatched = true;
             TurnOnNextIndicator();

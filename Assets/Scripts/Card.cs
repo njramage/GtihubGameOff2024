@@ -7,10 +7,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 {
     private Transform parentAfterDragging;
 
-    private Location? _location;
-    private Tool? _tool;
-    private Crime? _crime;
-    private Feature? _feature;
+    private Location _location;
+    private Tool _tool;
+    private Crime _crime;
+    private Feature _feature;
     private bool dragged = false;
     [SerializeField]
     float speed;
@@ -23,41 +23,29 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField]
     private int cardIndex;
 
-    public void Setup(string cardName, Sprite sprite, Location? location, Tool? tool, Crime? crime, Feature? feature)
+    public void Setup(Sprite sprite, Category category, int value)
     {
-        _location = location;
-        _tool = tool;
-        _crime = crime;
-        _feature = feature;
-        gameObject.GetComponentInChildren<Image>().sprite = sprite;
-        gameObject.GetComponentInChildren<TextMeshPro>().text = cardName;
-    }
-
-    void Awake()
-    {
-        switch ((Category)category)
+        switch (category)
         {
             case Category.Location:
-                _location = (Location)cardIndex;
-                Debug.Log($"Location: {_location}");
+                _location = (Location)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _location.ToString();
                 break;
             case Category.Tool:
-                _tool = (Tool)cardIndex;
-                Debug.Log($"Tool: {_tool}");
+                _tool = (Tool)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _tool.ToString();
                 break;
             case Category.Crime:
-                _crime = (Crime)cardIndex;
-                Debug.Log($"Crime: {_crime}");
+                _crime = (Crime)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _crime.ToString();
                 break;
             case Category.Feature:
-            default:
-                _feature = (Feature)cardIndex;
-                Debug.Log($"Feature: {_feature}");
+                _feature = (Feature)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _feature.ToString();
                 break;
         }
-        gameObject.GetComponentInChildren<Image>().sprite = sprite;
-        // Null reference
-        // gameObject.GetComponentInChildren<TextMeshPro>().text = cardName;
+
+        if(sprite is not null) gameObject.GetComponentInChildren<Image>().sprite = sprite;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

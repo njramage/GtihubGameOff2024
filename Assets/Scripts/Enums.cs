@@ -1,5 +1,6 @@
 public enum Location
 {
+    None,
     BowlingAlley,
     Airport,
     ConvenienceStore,
@@ -8,6 +9,7 @@ public enum Location
 
 public enum Tool
 {
+    None,
     Knife,
     MetalPipe,
     Poison,
@@ -16,6 +18,7 @@ public enum Tool
 
 public enum Crime
 {
+    None,
     Murder,
     Arson,
     Robbery,
@@ -24,6 +27,7 @@ public enum Crime
 
 public enum Feature
 {
+    None,
     Hat,
     Hair,
     Jewelry,

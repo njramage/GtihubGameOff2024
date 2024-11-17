@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public UnityEvent<Location?, Tool?, Crime?, Feature?> MergeEvent;
+    public UnityEvent<Location, Tool, Crime, Feature> MergeEvent;
 
     [SerializeField]
     private GameObject uiManagerPrefab = null;
@@ -59,10 +59,10 @@ public class GameManager : MonoBehaviour
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
-            Location = (Location)Random.Range(0, 3),
-            Tool = (Tool)Random.Range(0, 3),
-            Crime = (Crime)Random.Range(0, 3),
-            Feature = (Feature)Random.Range(0, 3)
+            Location = (Location)Random.Range(1, 4),
+            Tool = (Tool)Random.Range(1, 4),
+            Crime = (Crime)Random.Range(1, 4),
+            Feature = (Feature)Random.Range(1, 4)
         };
         suspectData.Add(correctSuspect);
 
@@ -73,10 +73,10 @@ public class GameManager : MonoBehaviour
 
             suspectData.Add(new SuspectData
             {
-                Location = (Location)Random.Range(0, 3),
-                Tool = (Tool)Random.Range(0, 3),
-                Crime = (Crime)Random.Range(0, 3),
-                Feature = (Feature)Random.Range(0, 3)
+                Location = (Location)Random.Range(1, 4),
+                Tool = (Tool)Random.Range(1, 4),
+                Crime = (Crime)Random.Range(1, 4),
+                Feature = (Feature)Random.Range(1, 4)
             });
 
             if (similarSuspect)

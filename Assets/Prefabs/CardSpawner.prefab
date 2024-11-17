@@ -68,5 +68,6 @@ MonoBehaviour:
   - {fileID: 8652733005390346509, guid: fb7af06dfea96b0bfb24c4d4eb0b012d, type: 3}
   - {fileID: 8652733005390346509, guid: 4ae644b57514070a387a827fbc0a3197, type: 3}
   - {fileID: 8652733005390346509, guid: 02738cd23be5acf07806509842010438, type: 3}
+  cardTemplate: {fileID: 8652733005390346509, guid: 3fafe1e0a7f82df47b092b457265f114, type: 3}
   timeBewteenSpawnSec: 3
   numCardCategories: 4
