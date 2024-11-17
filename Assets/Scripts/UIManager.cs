@@ -23,8 +23,7 @@ public class UIManager : MonoBehaviour
 
     private List<Suspect> suspects = new List<Suspect>();
     private SuspectData selectedSuspect = null;
-    [SerializeField]
-    protected UIDocument correctRevealIndicatorPanel;
+    private UIDocument correctRevealIndicatorPanel;
 
     private struct UIIndicators
     {
