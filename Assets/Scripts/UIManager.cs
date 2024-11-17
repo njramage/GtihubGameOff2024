@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject suspectPanel = null;
     [SerializeField]
-    private GameObject suspectPrefab = null;
+    private Suspect suspectPrefab;
 
     [SerializeField]
     private GameObject selectPanel = null;
@@ -101,12 +101,6 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (suspectPrefab == null)
-        {
-            Debug.LogError($"Cannot continue without {nameof(suspectPrefab)} assigned in Inspector!");
-            return;
-        }
-
         if (selectPanel == null)
         {
             Debug.LogError($"Cannot continue without {nameof(selectPanel)} assigned in Inspector!");
@@ -133,11 +127,10 @@ public class UIManager : MonoBehaviour
         foreach(var suspect in suspectData)
         {
             var instantiatedSuspect = Instantiate(suspectPrefab, suspectPanel.transform);
-            var suspectComponent = instantiatedSuspect.GetComponent<Suspect>();
-            suspects.Add(suspectComponent);
-            suspectComponent.OnSelect += OnSuspectSelect;
-            suspectComponent.SetupData(suspect);
-            instantiatedSuspect.SetActive(true);
+            suspects.Add(instantiatedSuspect);
+            instantiatedSuspect.OnSelect += OnSuspectSelect;
+            instantiatedSuspect.SetupData(suspect);
+            instantiatedSuspect.gameObject.SetActive(true);
         }
 
         GameManager.Instance.MergeEvent.AddListener(updateCorrectIndicators);
