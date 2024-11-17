@@ -28,6 +28,11 @@ public class Suspect : MonoBehaviour
             return;
         }
 
+        foreach (var indicator in indicators)
+        {
+            indicator.color = Color.gray;
+        }
+
         suspectData = data;
         GameManager.Instance.MergeEvent.AddListener(OnCardsCombined);
     }
@@ -71,7 +76,7 @@ public class Suspect : MonoBehaviour
     {
         if (indicators.Count > progress)
         {
-            indicators[progress].enabled = true;
+            indicators[progress].color = Color.white;
             progress++;
         }
     }

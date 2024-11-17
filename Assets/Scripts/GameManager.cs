@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private int numberOfSuspects = 6;
-    private SuspectData correctSuspect = null;
+    public SuspectData correctSuspect {get; private set;}
     private List<SuspectData> suspectData = new List<SuspectData>();
 
     private void Awake()
