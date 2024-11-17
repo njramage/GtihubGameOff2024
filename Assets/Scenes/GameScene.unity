@@ -1035,10 +1035,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555978141}
     m_Modifications:
-    - target: {fileID: 1176097234218754422, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
-      propertyPath: timeBewteenSpawnSec
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7576770960651550856, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
       propertyPath: m_Name
       value: CardSpawner
