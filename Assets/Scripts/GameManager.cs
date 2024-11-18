@@ -10,12 +10,12 @@ public class GameManager : MonoBehaviour
     public UnityEvent<Location, Tool, Crime, Feature> MergeEvent;
 
     [SerializeField]
-    private GameObject uiManagerPrefab = null;
+    private UIManager uiManagerPrefab;
     private UIManager uiManager = null;
 
     [SerializeField]
     private int numberOfSuspects = 6;
-    private SuspectData correctSuspect = null;
+    public SuspectData correctSuspect {get; private set;}
     private List<SuspectData> suspectData = new List<SuspectData>();
 
     private void Awake()
@@ -34,16 +34,9 @@ public class GameManager : MonoBehaviour
 
     private void SetupGame()
     {
-        if (uiManagerPrefab == null)
-        {
-            Debug.LogError($"Cannot setup game without {nameof(uiManagerPrefab)} assigned in Inspector!");
-            return;
-        }
-
         if (uiManager == null)
         {
-            var spawnedUiManager = Instantiate(uiManagerPrefab, gameObject.transform);
-            uiManager = spawnedUiManager.GetComponent<UIManager>();
+            uiManager = Instantiate(uiManagerPrefab, gameObject.transform);
         }
 
         RandomiseSuspects();
@@ -59,10 +52,10 @@ public class GameManager : MonoBehaviour
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         correctSuspect = new SuspectData
         {
-            Location = (Location)Random.Range(1, 4),
-            Tool = (Tool)Random.Range(1, 4),
-            Crime = (Crime)Random.Range(1, 4),
-            Feature = (Feature)Random.Range(1, 4)
+            Location = (Location)Random.Range(1, 5),
+            Tool = (Tool)Random.Range(1, 5),
+            Crime = (Crime)Random.Range(1, 5),
+            Feature = (Feature)Random.Range(1, 5)
         };
         suspectData.Add(correctSuspect);
 
@@ -73,10 +66,10 @@ public class GameManager : MonoBehaviour
 
             suspectData.Add(new SuspectData
             {
-                Location = (Location)Random.Range(1, 4),
-                Tool = (Tool)Random.Range(1, 4),
-                Crime = (Crime)Random.Range(1, 4),
-                Feature = (Feature)Random.Range(1, 4)
+                Location = (Location)Random.Range(1, 5),
+                Tool = (Tool)Random.Range(1, 5),
+                Crime = (Crime)Random.Range(1, 5),
+                Feature = (Feature)Random.Range(1, 5)
             });
 
             if (similarSuspect)

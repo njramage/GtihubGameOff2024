@@ -1,0 +1,26 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainStyleSheet.uss?fileID=7433441132597879392&amp;guid=62ff74d9d74bc03e0adf60730ea3809f&amp;type=3#MainStyleSheet" />
+    <engine:VisualElement name="Panel" style="flex-grow: 1; align-self: flex-end; justify-content: space-evenly; flex-shrink: 0; align-items: stretch; align-content: auto; position: relative;">
+        <engine:VisualElement style="flex-grow: 0; align-items: auto; justify-content: flex-start; align-self: auto; align-content: auto; background-color: rgba(9, 71, 17, 0.34);">
+            <engine:Label text="Clues" name="CluesRevealed" class="indicatorLabel" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-right-width: 0; border-bottom-width: 3px; min-width: 115px;" />
+            <engine:VisualElement name="IndicatorGroup" class="correctIndicatorGroup" style="flex-grow: 0; justify-content: flex-end; align-self: flex-end; align-items: flex-start; flex-shrink: 0;">
+                <engine:VisualElement name="LocationIndicator" class="correctIndicator">
+                    <engine:Label name="Tick" />
+                    <engine:Label text="Location" name="LocationLabel" class="indicatorLabel" />
+                </engine:VisualElement>
+                <engine:VisualElement name="ToolIndicator" class="correctIndicator">
+                    <engine:Label name="Tick" />
+                    <engine:Label text="Tool" name="ToolLabel" class="indicatorLabel" />
+                </engine:VisualElement>
+                <engine:VisualElement name="CrimeIndicator" class="correctIndicator">
+                    <engine:Label name="Tick" />
+                    <engine:Label text="Crime&#10;" name="CrimeLabel" class="indicatorLabel" />
+                </engine:VisualElement>
+                <engine:VisualElement name="FeatureIndicator" class="correctIndicator">
+                    <engine:Label name="Tick" />
+                    <engine:Label text="Feature" name="LocationLabel" class="indicatorLabel" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
