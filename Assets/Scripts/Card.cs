@@ -7,19 +7,45 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 {
     private Transform parentAfterDragging;
 
-    private Location? _location;
-    private Tool? _tool;
-    private Crime? _crime;
-    private Feature? _feature;
+    private Location _location;
+    private Tool _tool;
+    private Crime _crime;
+    private Feature _feature;
+    private bool dragged = false;
+    [SerializeField]
+    float speed;
+    [SerializeField]
+    private string cardName;
+    [SerializeField]
+    private Sprite sprite;
+    [SerializeField]
+    private int category;
+    [SerializeField]
+    private int cardIndex;
 
-    public void Setup(string cardName, Sprite sprite, Location? location, Tool? tool, Crime? crime, Feature? feature)
+    public void Setup(Sprite sprite, Category category, int value)
     {
-        _location = location;
-        _tool = tool;
-        _crime = crime;
-        _feature = feature;
-        gameObject.GetComponentInChildren<Image>().sprite = sprite;
-        gameObject.GetComponentInChildren<TextMeshPro>().text = cardName;
+        switch (category)
+        {
+            case Category.Location:
+                _location = (Location)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _location.ToString();
+                break;
+            case Category.Tool:
+                _tool = (Tool)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _tool.ToString();
+                break;
+            case Category.Crime:
+                _crime = (Crime)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _crime.ToString();
+                break;
+            case Category.Feature:
+                _feature = (Feature)value;
+                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _feature.ToString();
+                break;
+        }
+
+        if(sprite is not null) gameObject.GetComponentInChildren<Image>().sprite = sprite;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -27,11 +53,14 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         // Make sure that the card being dragged is always on top
         parentAfterDragging = transform.parent;
         transform.SetAsLastSibling();
+        dragged = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.parent.position.z;
+        transform.position = mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -45,6 +74,18 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 ray.gameObject.GetComponent<Card>().OnCardMerge();
                 OnCardMerge();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!dragged)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - (speed * Time.fixedDeltaTime), transform.position.z); 
+            if (transform.position.y <= -11)
+            {
+                Destroy(gameObject);
             }
         }
     }
