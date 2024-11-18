@@ -24,11 +24,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField]
     float speed;
     [SerializeField]
-    private string cardName;
-    [SerializeField]
     private int category;
     [SerializeField]
     private int cardIndex;
+    private Sprite cardSprite;
+    private string cardName;
 
     public void Setup(Category category, int value)
     {
@@ -36,26 +36,32 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             case Category.Location:
                 _location = (Location)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + _location.ToString().Replace("_", " ");
-                if(_locationImages[value - 1] is not null) gameObject.GetComponent<Image>().sprite = _locationImages[value - 1];
+                cardName = _location.ToString();
+                cardSprite = _locationImages[value - 1];
                 break;
             case Category.Tool:
                 _tool = (Tool)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + _tool.ToString().Replace("_", " ");
-                if(_toolImages[value - 1] is not null) gameObject.GetComponent<Image>().sprite = _toolImages[value - 1];
+                cardName = _tool.ToString();
+                cardSprite = _toolImages[value - 1];
                 break;
             case Category.Crime:
                 _crime = (Crime)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + _crime.ToString().Replace("_", " ");
-                if(_crimeImages[value - 1] is not null) gameObject.GetComponent<Image>().sprite = _crimeImages[value - 1];
+                cardName = _crime.ToString();
+                cardSprite = _crimeImages[value - 1];
                 break;
             case Category.Feature:
                 _feature = (Feature)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + _feature.ToString().Replace("_", " ");
-                if(_featureImages[value - 1] is not null) gameObject.GetComponent<Image>().sprite = _featureImages[value - 1];
+                cardName = _feature.ToString();
+                cardSprite = _featureImages[value - 1];
+                break;
+            default:
+                cardName = "";
+                cardSprite = null;
                 break;
         }
 
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + cardName.Replace("_", " ");
+        if(cardSprite is not null) gameObject.GetComponent<Image>().sprite = cardSprite;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
