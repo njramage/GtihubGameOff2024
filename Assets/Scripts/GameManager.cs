@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     private void SetupGame()
     {
         RandomiseSuspects();
-
         SetupSlotMachine();
     }
 
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
         }
 
         slotMachine.OnSpinComplete += SetupUI;
-        slotMachine.Setup(correctSuspect, 3, true);
+        slotMachine.Setup(correctSuspect);
     }
 
     private void SetupUI()
