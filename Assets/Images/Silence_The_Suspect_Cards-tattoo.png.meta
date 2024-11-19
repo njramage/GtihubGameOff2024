@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-tattoo_0: 7479369398187944321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

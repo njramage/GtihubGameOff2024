@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-arson_0: 8020498791186596047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-pipe_cropped_0: -2030465955194031440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

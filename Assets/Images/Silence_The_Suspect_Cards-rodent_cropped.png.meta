@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-rodent_cropped_0: -5759559908725395106
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

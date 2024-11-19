@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-knife_copped_0: -2991735109383665948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
