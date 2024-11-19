@@ -30,7 +30,7 @@ public class CardSpawner : MonoBehaviour
             transform.position = cardSpawnPosition;
             Card spawnedCard = Instantiate(cardTemplate, transform.parent);
             spawnedCard.transform.position = cardSpawnPosition;
-            spawnedCard.Setup(sprite: null, category: (Category)randomCardCategory, value: randomCard);
+            spawnedCard.Setup(category: (Category)randomCardCategory, value: randomCard);
             yield return new WaitForSeconds(timeBewteenSpawnSec);
         }
     }

@@ -1,9 +1,12 @@
+using System;
+using System.Globalization;
+
 public enum Location
 {
     None,
-    BowlingAlley,
+    Bowling_Alley,
     Airport,
-    ConvenienceStore,
+    Store,
     Park
 }
 
@@ -11,7 +14,7 @@ public enum Tool
 {
     None,
     Knife,
-    MetalPipe,
+    Pipe,
     Poison,
     Rodent
 }
@@ -29,9 +32,9 @@ public enum Feature
 {
     None,
     Hat,
-    Hair,
+    Hair_Style,
     Jewelry,
-    HairColour
+    Tattoo
 }
 
 public enum Category

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,44 +9,59 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Transform parentAfterDragging;
 
     private Location _location;
+    [SerializeField]
+    private List<Sprite> _locationImages;
     private Tool _tool;
+    [SerializeField]
+    private List<Sprite> _toolImages;
     private Crime _crime;
+    [SerializeField]
+    private List<Sprite> _crimeImages;
     private Feature _feature;
+    [SerializeField]
+    private List<Sprite> _featureImages;
     private bool dragged = false;
     [SerializeField]
     float speed;
     [SerializeField]
-    private string cardName;
-    [SerializeField]
-    private Sprite sprite;
-    [SerializeField]
     private int category;
     [SerializeField]
     private int cardIndex;
+    private Sprite cardSprite;
+    private string cardName;
 
-    public void Setup(Sprite sprite, Category category, int value)
+    public void Setup(Category category, int value)
     {
         switch (category)
         {
             case Category.Location:
                 _location = (Location)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _location.ToString();
+                cardName = _location.ToString();
+                cardSprite = _locationImages[value - 1];
                 break;
             case Category.Tool:
                 _tool = (Tool)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _tool.ToString();
+                cardName = _tool.ToString();
+                cardSprite = _toolImages[value - 1];
                 break;
             case Category.Crime:
                 _crime = (Crime)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _crime.ToString();
+                cardName = _crime.ToString();
+                cardSprite = _crimeImages[value - 1];
                 break;
             case Category.Feature:
                 _feature = (Feature)value;
-                gameObject.GetComponentInChildren<TextMeshProUGUI>().text = _feature.ToString();
+                cardName = _feature.ToString();
+                cardSprite = _featureImages[value - 1];
+                break;
+            default:
+                cardName = "";
+                cardSprite = null;
                 break;
         }
 
-        if(sprite is not null) gameObject.GetComponentInChildren<Image>().sprite = sprite;
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + cardName.Replace("_", " ");
+        if(cardSprite is not null) gameObject.GetComponent<Image>().sprite = cardSprite;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -66,7 +82,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDragging);
-        var results = new System.Collections.Generic.List<RaycastResult>();
+        var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
         foreach (var ray in results)
         {
