@@ -17,9 +17,13 @@ public class CardSpawner : MonoBehaviour
     private const float MAGIC_RIGHT_NUMBER = 135;
     private const float SCREEN_WIDTH = 1920;
 
+    private bool spawning = true;
+
     private IEnumerator spawnCardLoop()
     {
-        while (true)
+        spawning = true;
+
+        while (!GameManager.Instance.GameplayPaused)
         {
             Vector3 maxPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(SCREEN_WIDTH - MAGIC_RIGHT_NUMBER, 0, 0));
             Vector3 minPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(MAGIC_LEFT_NUMBER, 0, 0));
@@ -33,6 +37,8 @@ public class CardSpawner : MonoBehaviour
             spawnedCard.Setup(category: (Category)randomCardCategory, value: randomCard);
             yield return new WaitForSeconds(timeBewteenSpawnSec);
         }
+
+        spawning = false;
     }
 
     void Start()
@@ -40,4 +46,11 @@ public class CardSpawner : MonoBehaviour
         StartCoroutine(spawnCardLoop());
     }
 
+    private void FixedUpdate()
+    {
+        if (!GameManager.Instance.GameplayPaused && !spawning)
+        {
+            StartCoroutine(spawnCardLoop());
+        }
+    }
 }

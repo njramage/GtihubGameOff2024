@@ -20,6 +20,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Feature _feature;
     [SerializeField]
     private List<Sprite> _featureImages;
+
     private bool dragged = false;
     [SerializeField]
     float speed;
@@ -66,6 +67,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (GameManager.Instance.GameplayPaused)
+        {
+            return;
+        }
+
         // Make sure that the card being dragged is always on top
         parentAfterDragging = transform.parent;
         transform.SetAsLastSibling();
@@ -96,7 +102,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     void FixedUpdate()
     {
-        if (!dragged)
+        if (!dragged && !GameManager.Instance.GameplayPaused)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - (speed * Time.fixedDeltaTime), transform.position.z); 
             if (transform.position.y <= -11)
