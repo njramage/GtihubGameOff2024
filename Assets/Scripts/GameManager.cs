@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public bool GameplayPaused { get; private set; } = false;
+
     public UnityEvent<Location, Tool, Crime, Feature> MergeEvent;
 
     [SerializeField]
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         uiManager.Setup(suspectData);
         uiManager.OnSelectYesPressed += OnSuspectSelected;
+        uiManager.OnPausePressed += PauseGameplay;
     }
 
     private void RandomiseSuspects()
@@ -81,6 +84,8 @@ public class GameManager : MonoBehaviour
 
     private void OnSuspectSelected(SuspectData suspectData)
     {
+        GameplayPaused = true;
+
         Debug.Log($"Selected suspect with " +
             $"Location: {suspectData.Location} " +
             $"Tool: {suspectData.Tool} " +
@@ -96,11 +101,17 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 
+    private void PauseGameplay(bool gamePaused)
+    {
+        GameplayPaused = gamePaused;
+    }
+
     private void OnDestroy()
     {
         if (uiManager != null)
         {
             uiManager.OnSelectYesPressed -= OnSuspectSelected;
+            uiManager.OnPausePressed -= PauseGameplay;
         }
     }
 }
