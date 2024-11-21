@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: roundLengthSecs
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -677,7 +681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8942803551486001247, guid: e2d8b940a8f6a46f7af92ada99614e56, type: 3}
+  m_Sprite: {fileID: 1874508781651767270, guid: 1b672812a5fe442c5a6f23cda3a02567, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -215,6 +215,7 @@ public class UIManager : MonoBehaviour
 
         OnSelectYesPressed?.Invoke(selectedSuspect);
         selectPanel?.SetActive(false);
+        timer.OnSuspectSelectedSuccessfully();
     }
 
     public void OnSelectNo()

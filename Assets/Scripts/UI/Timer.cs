@@ -14,7 +14,10 @@ public class Timer : MonoBehaviour
 
     public void Setup(float maxTime)
     {
-        timeRemaining = maxTime;
+        // Pad by 1 so that the timer starts at 1:00
+        // (if set to 60 seconds)
+        timeRemaining = maxTime + 1.0f;
+
         textChild = GetComponentInChildren<TMP_Text>();
         if (textChild == null)
         {
@@ -23,7 +26,7 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void OnSuspectSelected()
+    public void OnSuspectSelectedSuccessfully()
     {
         OnEnd?.Invoke(timeRemaining);
     }
@@ -48,7 +51,7 @@ public class Timer : MonoBehaviour
         var minutes = Mathf.FloorToInt(timeRemaining / 60);
         var seconds = Mathf.FloorToInt(timeRemaining % 60);
 
-        textChild.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+        textChild.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void OnDestroy()
