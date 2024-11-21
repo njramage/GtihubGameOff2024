@@ -250,10 +250,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: roundLengthSecs
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
