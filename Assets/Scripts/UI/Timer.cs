@@ -6,7 +6,6 @@ public class Timer : MonoBehaviour
 {
     public Action<float> OnEnd = null;
 
-    public float TimeRemaining { get { return timeRemaining; } }
     private float timeRemaining = 0.0f;
     private TMP_Text textChild = null;
 
@@ -14,7 +13,7 @@ public class Timer : MonoBehaviour
 
     public void Setup(float maxTime)
     {
-        // Pad by 1 so that the timer actually starts at the specified round length
+        // Pad by 1 so that the timer text actually starts at the specified round length
         timeRemaining = maxTime + 1.0f;
 
         textChild = GetComponentInChildren<TMP_Text>();
@@ -32,13 +31,13 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.GameplayPaused && timeRemaining > 0)
+        if (!GameManager.Instance.GameplayPaused && timeRemaining > 1)
         {
             timeRemaining -= Time.deltaTime;
             UpdateTimerText();
         }
 
-        if (timeRemaining <= 0 && !timeExpiredInvoked)
+        if (timeRemaining <= 1 && !timeExpiredInvoked)
         {
             OnEnd?.Invoke(timeRemaining);
             timeExpiredInvoked = true;
@@ -47,7 +46,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        if (timeRemaining > 0)
+        if (timeRemaining > 1)
         {
             var minutes = Mathf.FloorToInt(timeRemaining / 60);
             var seconds = Mathf.FloorToInt(timeRemaining % 60);

@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -104,11 +103,8 @@ public class GameManager : MonoBehaviour
         bool correctGuess = suspectData == correctSuspect;
         Debug.Log($"Correct suspect? {correctGuess}");
 
-        if (correctGuess)
-        {
-
+        if (correctGuess) 
             SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
-        }
         else
             SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
@@ -123,11 +119,10 @@ public class GameManager : MonoBehaviour
         finalTime = roundLengthSecs - timeRemaining;
         GameplayPaused = true;
 
-        if (timeRemaining <= 0)
+        // User still has the specified amount of time, but this means that when
+        // the timer hits 00:00, the user will be prompted to select a suspect.
+        if (timeRemaining <= 1)
         {
-            // Set to the max number of seconds in the round. 
-            // This does have the side effect of giving the player an extra second,
-            // but is better for game feel.
             finalTime = roundLengthSecs;
             uiManager.OnTimeExpired();
         }
