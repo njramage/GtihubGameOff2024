@@ -14,8 +14,7 @@ public class Timer : MonoBehaviour
 
     public void Setup(float maxTime)
     {
-        // Pad by 1 so that the timer starts at 1:00
-        // (if set to 60 seconds)
+        // Pad by 1 so that the timer actually starts at the specified round length
         timeRemaining = maxTime + 1.0f;
 
         textChild = GetComponentInChildren<TMP_Text>();

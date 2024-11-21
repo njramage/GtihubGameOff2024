@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         // Change as you see fit. Have not yet added functionality to set similar data on other suspects.
         // (also obviously the correct suspect shouldn't be the first one every time lol)
         var correctSuspectIndex = Random.Range(0, numberOfSuspects);
-        Debug.Log(correctSuspectIndex);
         for (int i = 0; i < numberOfSuspects; i++)
         {
             var newSuspectData = new SuspectData
@@ -122,7 +121,6 @@ public class GameManager : MonoBehaviour
     private void OnTimerEnd(float timeRemaining)
     {
         finalTime = roundLengthSecs - timeRemaining;
-        Debug.Log(finalTime);
         GameplayPaused = true;
 
         if (timeRemaining <= 0)
@@ -131,7 +129,6 @@ public class GameManager : MonoBehaviour
             // This does have the side effect of giving the player an extra second,
             // but is better for game feel.
             finalTime = roundLengthSecs;
-            Debug.Log($"Time up at {finalTime}! Make a selection!");
             uiManager.OnTimeExpired();
         }
     }
