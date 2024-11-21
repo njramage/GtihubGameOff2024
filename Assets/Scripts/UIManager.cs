@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     private List<Suspect> suspects = new List<Suspect>();
     private SuspectData selectedSuspect = null;
     private UIDocument correctRevealIndicatorPanel;
+    private bool canPause = true;
 
     private struct UIIndicators
     {
@@ -201,6 +202,7 @@ public class UIManager : MonoBehaviour
 
     public void OnTimeExpired()
     {
+        canPause = false;
         prompt.text = "Time is up. Select a suspect...";
         prompt.gameObject.SetActive(true);
     }
@@ -226,8 +228,11 @@ public class UIManager : MonoBehaviour
 
     public void OnPause()
     {
-        pausePanel?.SetActive(!GameManager.Instance.GameplayPaused);
-        OnPausePressed?.Invoke(!GameManager.Instance.GameplayPaused);
+        if (canPause)
+        {
+            pausePanel?.SetActive(!GameManager.Instance.GameplayPaused);
+            OnPausePressed?.Invoke(!GameManager.Instance.GameplayPaused);
+        }
     }
 
     public void OnReturnToMenu()
