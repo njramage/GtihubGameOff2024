@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     public Action<SuspectData> OnSelectYesPressed = null;
+    public Action<bool> OnPausePressed = null;
 
     [SerializeField]
     private GameObject suspectPanel = null;
@@ -191,6 +192,12 @@ public class UIManager : MonoBehaviour
         selectPanel?.SetActive(false);
     }
 
+    public void OnPause()
+    {
+        pausePanel?.SetActive(!GameManager.Instance.GameplayPaused);
+        OnPausePressed?.Invoke(!GameManager.Instance.GameplayPaused);
+    }
+
     public void OnReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -212,5 +219,6 @@ public class UIManager : MonoBehaviour
         }
 
         OnSelectYesPressed = null;
+        OnPausePressed = null;
     }
 }
