@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -21,6 +22,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject pausePanel = null;
+
+    [SerializeField]
+    private Timer timer = null;
+
+    [SerializeField]
+    private TMP_Text prompt = null;
 
     private List<Suspect> suspects = new List<Suspect>();
     private SuspectData selectedSuspect = null;
@@ -114,6 +121,18 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        if (timer == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(timer)} assigned in Inspector!");
+            return;
+        }
+
+        if (prompt == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(timer)} assigned in Inspector!");
+            return;
+        }
+
         correctRevealIndicatorPanel = transform.parent.GetComponent<UIDocument>();
         VisualElement locationIndicator = correctRevealIndicatorPanel.rootVisualElement.Q("LocationIndicator");
         VisualElement toolIndicator = correctRevealIndicatorPanel.rootVisualElement.Q("ToolIndicator");
@@ -135,6 +154,12 @@ public class UIManager : MonoBehaviour
         }
 
         GameManager.Instance.MergeEvent.AddListener(updateCorrectIndicators);
+    }
+
+    public Timer SetupTimer(float maxTime)
+    {
+        timer.Setup(maxTime);
+        return timer;
     }
 
     private void updateCorrectIndicators(Location location, Tool tool, Crime crime, Feature feature)
@@ -172,6 +197,12 @@ public class UIManager : MonoBehaviour
         selectedSuspect = suspectData;
         selectPanel?.SetActive(true);
         selectPanel?.transform.SetAsLastSibling();
+    }
+
+    public void OnTimeExpired()
+    {
+        prompt.text = "Time is up. Select a suspect...";
+        prompt.gameObject.SetActive(true);
     }
 
     public void OnSelectYes()
