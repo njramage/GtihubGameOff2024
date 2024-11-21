@@ -125,8 +125,12 @@ public class GameManager : MonoBehaviour
         Debug.Log(finalTime);
         GameplayPaused = true;
 
-        if (finalTime <= 0)
+        if (timeRemaining <= 0)
         {
+            // Set to the max number of seconds in the round. 
+            // This does have the side effect of giving the player an extra second,
+            // but is better for game feel.
+            finalTime = roundLengthSecs;
             Debug.Log($"Time up at {finalTime}! Make a selection!");
             uiManager.OnTimeExpired();
         }

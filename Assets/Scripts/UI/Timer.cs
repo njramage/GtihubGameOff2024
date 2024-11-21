@@ -48,10 +48,17 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        var minutes = Mathf.FloorToInt(timeRemaining / 60);
-        var seconds = Mathf.FloorToInt(timeRemaining % 60);
+        if (timeRemaining > 0)
+        {
+            var minutes = Mathf.FloorToInt(timeRemaining / 60);
+            var seconds = Mathf.FloorToInt(timeRemaining % 60);
 
-        textChild.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            textChild.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        else
+        {
+            textChild.text = "00:00";
+        }
     }
 
     private void OnDestroy()
