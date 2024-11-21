@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-poison_0: 3931501958862078659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

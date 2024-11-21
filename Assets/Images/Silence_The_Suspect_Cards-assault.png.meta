@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-assault_0: -1207230819345911261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

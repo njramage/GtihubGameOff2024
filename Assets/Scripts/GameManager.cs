@@ -53,32 +53,23 @@ public class GameManager : MonoBehaviour
         // More fine-tuning will likely need to go into this for difficulty reasons.
         // Change as you see fit. Have not yet added functionality to set similar data on other suspects.
         // (also obviously the correct suspect shouldn't be the first one every time lol)
-        correctSuspect = new SuspectData
+        var correctSuspectIndex = Random.Range(0, numberOfSuspects);
+        for (int i = 0; i < numberOfSuspects; i++)
         {
-            Location = (Location)Random.Range(1, 5),
-            Tool = (Tool)Random.Range(1, 5),
-            Crime = (Crime)Random.Range(1, 5),
-            Feature = (Feature)Random.Range(1, 5)
-        };
-        suspectData.Add(correctSuspect);
-
-        var similarSuspectAdded = false;
-        for (int i = 1; i < numberOfSuspects; i++)
-        {
-            var similarSuspect = similarSuspectAdded ? false : Random.Range(0, 9) % 2 == 0;
-
-            suspectData.Add(new SuspectData
+            var newSuspectData = new SuspectData
             {
                 Location = (Location)Random.Range(1, 5),
                 Tool = (Tool)Random.Range(1, 5),
                 Crime = (Crime)Random.Range(1, 5),
                 Feature = (Feature)Random.Range(1, 5)
-            });
+            };
 
-            if (similarSuspect)
+            if (i == correctSuspectIndex)
             {
-                similarSuspectAdded = true;
+                correctSuspect = newSuspectData;
             }
+
+            suspectData.Add(newSuspectData);
         }
     }
 

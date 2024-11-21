@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Cards-airport_cropped_0: -5087161438527079837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Silence_The_Suspect_Bowling_cropped_0: -4221033840199363584
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
