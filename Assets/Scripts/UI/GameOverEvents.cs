@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOverEvents : MonoBehaviour
 {
-    private UIDocument document;
+    protected UIDocument document;
 
     private Button playAgainButton;
+    private Label timeText; 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         document = GetComponent<UIDocument>();
 

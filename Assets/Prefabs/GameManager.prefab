@@ -50,6 +50,7 @@ MonoBehaviour:
       m_Calls: []
   uiManagerPrefab: {fileID: 9112603903858948861, guid: d7d5cb81aa471d147ab17b15f72ec81f, type: 3}
   numberOfSuspects: 6
+  roundLengthSecs: 60
 --- !u!114 &5595598500109461754
 MonoBehaviour:
   m_ObjectHideFlags: 0
