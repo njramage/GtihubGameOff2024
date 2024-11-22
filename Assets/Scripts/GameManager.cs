@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     }
     private float finalTime = 0.0f;
 
+    private ScoreManager scoreManager = null;
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,9 +57,10 @@ public class GameManager : MonoBehaviour
             uiManager = Instantiate(uiManagerPrefab, gameObject.transform);
         }
 
+        scoreManager = new ScoreManager();
         RandomiseSuspects();
 
-        uiManager.Setup(suspectData);
+        uiManager.Setup(suspectData, scoreManager.CurrentSessionScore, scoreManager.AllTimeHighScore);
         uiManager.OnSelectYesPressed += OnSuspectSelected;
         uiManager.OnPausePressed += PauseGameplay;
 
@@ -103,10 +106,21 @@ public class GameManager : MonoBehaviour
         bool correctGuess = suspectData == correctSuspect;
         Debug.Log($"Correct suspect? {correctGuess}");
 
-        if (correctGuess) 
+        if (correctGuess)
+        {
+            scoreManager.CurrentSessionScore = scoreManager.CurrentSessionScore + 1;
+            if (scoreManager.CurrentSessionScore > scoreManager.AllTimeHighScore)
+            {
+                scoreManager.AllTimeHighScore = scoreManager.CurrentSessionScore;
+            }
+
             SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
+        }
         else
+        {
+            scoreManager.CurrentSessionScore = 0;
             SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+        }
     }
 
     private void PauseGameplay(bool gamePaused)
@@ -135,5 +149,7 @@ public class GameManager : MonoBehaviour
             uiManager.OnSelectYesPressed -= OnSuspectSelected;
             uiManager.OnPausePressed -= PauseGameplay;
         }
+
+        scoreManager.CurrentSessionScore = 0;
     }
 }

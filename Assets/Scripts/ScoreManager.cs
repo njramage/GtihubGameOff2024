@@ -6,7 +6,7 @@ public class ScoreManager
     {
         get
         {
-            return PlayerPrefs.GetInt(nameof(AllTimeHighScore));
+            return PlayerPrefs.GetInt(nameof(AllTimeHighScore), 0);
         }
         set
         {
@@ -18,16 +18,11 @@ public class ScoreManager
     {
         get
         {
-            return PlayerPrefs.GetInt(nameof(CurrentSessionScore));
+            return PlayerPrefs.GetInt(nameof(CurrentSessionScore), 0);
         }
         set
         {
-            PlayerPrefs.SetInt(nameof(AllTimeHighScore), value);
+            PlayerPrefs.SetInt(nameof(CurrentSessionScore), value);
         }
-    }
-
-    public void ClearCurrentSessionScore()
-    {
-        PlayerPrefs.DeleteKey(nameof(CurrentSessionScore));
     }
 }
