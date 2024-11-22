@@ -149,7 +149,10 @@ public class GameManager : MonoBehaviour
             uiManager.OnSelectYesPressed -= OnSuspectSelected;
             uiManager.OnPausePressed -= PauseGameplay;
         }
+    }
 
+    private void OnApplicationQuit()
+    {
         scoreManager.CurrentSessionScore = 0;
     }
 }
