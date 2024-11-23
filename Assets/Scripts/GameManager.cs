@@ -17,8 +17,22 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private int numberOfSuspects = 6;
-    public SuspectData correctSuspect {get; private set;}
+    public SuspectData correctSuspect { get; private set; }
     private List<SuspectData> suspectData = new List<SuspectData>();
+
+    [SerializeField]
+    private float roundLengthSecs = 60;
+    public string FinalTimeText
+    {
+        get
+        {
+            var minutes = Mathf.FloorToInt(finalTime / 60);
+            var seconds = Mathf.CeilToInt(finalTime % 60);
+
+            return string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+    }
+    private float finalTime = 0.0f;
 
     private void Awake()
     {
@@ -46,6 +60,9 @@ public class GameManager : MonoBehaviour
         uiManager.Setup(suspectData);
         uiManager.OnSelectYesPressed += OnSuspectSelected;
         uiManager.OnPausePressed += PauseGameplay;
+
+        var timer = uiManager.SetupTimer(roundLengthSecs);
+        timer.OnEnd += OnTimerEnd;
     }
 
     private void RandomiseSuspects()
@@ -86,7 +103,7 @@ public class GameManager : MonoBehaviour
         bool correctGuess = suspectData == correctSuspect;
         Debug.Log($"Correct suspect? {correctGuess}");
 
-        if (correctGuess)
+        if (correctGuess) 
             SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
         else
             SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
@@ -95,6 +112,20 @@ public class GameManager : MonoBehaviour
     private void PauseGameplay(bool gamePaused)
     {
         GameplayPaused = gamePaused;
+    }
+
+    private void OnTimerEnd(float timeRemaining)
+    {
+        finalTime = roundLengthSecs - timeRemaining;
+        GameplayPaused = true;
+
+        // User still has the specified amount of time, but this means that when
+        // the timer hits 00:00, the user will be prompted to select a suspect.
+        if (timeRemaining <= 1)
+        {
+            finalTime = roundLengthSecs;
+            uiManager.OnTimeExpired();
+        }
     }
 
     private void OnDestroy()
