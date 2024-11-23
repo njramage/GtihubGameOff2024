@@ -34,6 +34,12 @@ public class UIManager : MonoBehaviour
     private UIDocument correctRevealIndicatorPanel;
     private bool canPause = true;
 
+    [Header("Score")]
+    [SerializeField]
+    private TMP_Text currentScoreText = null;
+    [SerializeField]
+    private TMP_Text allTimeScoreText = null;
+
     private struct UIIndicators
     {
         private VisualElement locationIndicator;
@@ -134,6 +140,18 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        if (currentScoreText == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(currentScoreText)} assigned in Inspector!");
+            return;
+        }
+
+        if (allTimeScoreText == null)
+        {
+            Debug.LogError($"Cannot continue without {nameof(allTimeScoreText)} assigned in Inspector!");
+            return;
+        }
+
         correctRevealIndicatorPanel = transform.parent.GetComponent<UIDocument>();
         VisualElement locationIndicator = correctRevealIndicatorPanel.rootVisualElement.Q("LocationIndicator");
         VisualElement toolIndicator = correctRevealIndicatorPanel.rootVisualElement.Q("ToolIndicator");
@@ -143,7 +161,7 @@ public class UIManager : MonoBehaviour
         correctIndicators.disableAll();
     }
 
-    public void Setup(List<SuspectData> suspectData)
+    public void Setup(List<SuspectData> suspectData, int currentScore, int allTimeScore)
     {
         foreach(var suspect in suspectData)
         {
@@ -155,6 +173,9 @@ public class UIManager : MonoBehaviour
         }
 
         GameManager.Instance.MergeEvent.AddListener(updateCorrectIndicators);
+
+        currentScoreText.text = currentScore.ToString();
+        allTimeScoreText.text = allTimeScore.ToString();
     }
 
     public Timer SetupTimer(float maxTime)
