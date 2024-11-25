@@ -49,5 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardTemplate: {fileID: 4869126733658066229, guid: 3fafe1e0a7f82df47b092b457265f114, type: 3}
-  timeBewteenSpawnSec: 3
+  timeBewteenSpawnSec: 1
   numCardCategories: 4
+  stopOnDrag: 0

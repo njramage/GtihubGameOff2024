@@ -21,7 +21,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     [SerializeField]
     private List<Sprite> _featureImages;
 
-    private bool dragged = false;
+    private bool _dragged = false;
+    private bool _stopOnDrag;
     [SerializeField]
     float speed;
     [SerializeField]
@@ -31,7 +32,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Sprite cardSprite;
     private string cardName;
 
-    public void Setup(Category category, int value)
+    public void Setup(Category category, int value, bool stopOnDrag = false)
     {
         switch (category)
         {
@@ -63,6 +64,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "<size=60%>" + cardName.Replace("_", " ");
         if(cardSprite is not null) gameObject.GetComponent<Image>().sprite = cardSprite;
+        _stopOnDrag = stopOnDrag;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -75,7 +77,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         // Make sure that the card being dragged is always on top
         parentAfterDragging = transform.parent;
         transform.SetAsLastSibling();
-        dragged = true;
+        _dragged = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -98,11 +100,16 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 OnCardMerge();
             }
         }
+
+        if (!_stopOnDrag)
+        {
+            _dragged = false;
+        }
     }
 
     void FixedUpdate()
     {
-        if (!dragged && !GameManager.Instance.GameplayPaused)
+        if (!_dragged && !GameManager.Instance.GameplayPaused)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - (speed * Time.fixedDeltaTime), transform.position.z); 
             if (transform.position.y <= -11)
