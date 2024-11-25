@@ -19,6 +19,9 @@ public class CardSpawner : MonoBehaviour
 
     private bool spawning = true;
 
+    [SerializeField]
+    private bool stopOnDrag = false;
+
     private IEnumerator spawnCardLoop()
     {
         spawning = true;
@@ -34,7 +37,7 @@ public class CardSpawner : MonoBehaviour
             transform.position = cardSpawnPosition;
             Card spawnedCard = Instantiate(cardTemplate, transform.parent);
             spawnedCard.transform.position = cardSpawnPosition;
-            spawnedCard.Setup(category: (Category)randomCardCategory, value: randomCard);
+            spawnedCard.Setup(category: (Category)randomCardCategory, value: randomCard, stopOnDrag: stopOnDrag);
             yield return new WaitForSeconds(timeBewteenSpawnSec);
         }
 

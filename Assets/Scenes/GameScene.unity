@@ -791,6 +791,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 555978141}
     m_Modifications:
     - target: {fileID: 1176097234218754422, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
+      propertyPath: stopOnDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176097234218754422, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
       propertyPath: timeBewteenSpawnSec
       value: 1
       objectReference: {fileID: 0}
