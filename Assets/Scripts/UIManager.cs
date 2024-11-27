@@ -16,7 +16,20 @@ public class UIManager : MonoBehaviour
     private GameObject suspectPanel = null;
     [SerializeField]
     private Suspect suspectPrefab;
+    Sprite[] suspectImages = new Sprite[6];
 
+    [SerializeField]
+    private Sprite suspectImage1;
+    [SerializeField]
+    private Sprite suspectImage2;
+    [SerializeField]
+    private Sprite suspectImage3;
+    [SerializeField]
+    private Sprite suspectImage4;
+    [SerializeField]
+    private Sprite suspectImage5;
+    [SerializeField]
+    private Sprite suspectImage6;
     [SerializeField]
     private GameObject selectPanel = null;
 
@@ -159,12 +172,60 @@ public class UIManager : MonoBehaviour
         VisualElement featureIndicator = correctRevealIndicatorPanel.rootVisualElement.Q("FeatureIndicator");
         correctIndicators = new UIIndicators(locationIndicator, toolIndicator, crimeIndicator, featureIndicator);
         correctIndicators.disableAll();
+
+        suspectSpriteSetup();
+    }
+    
+    private void suspectSpriteSetup() {
+        suspectImages[0] = suspectImage1;
+        suspectImages[1] = suspectImage2;
+        suspectImages[2] = suspectImage3;
+        suspectImages[3] = suspectImage4;
+        suspectImages[4] = suspectImage5;
+        suspectImages[5] = suspectImage6;
+    }
+    public static void RemoveAt<T>(ref T[] arr, int index)
+    {
+        for (int a = index; a < arr.Length - 1; a++)
+        {
+            // moving elements downwards, to fill the gap at [index]
+            arr[a] = arr[a + 1];
+        }
+        // finally, let's decrement Array's size by one
+        Array.Resize(ref arr, arr.Length - 1);
+    }
+
+    private int[] uniqueNumbers = {0,1,2,3,4,5};
+    private int retry = 9;
+    private int getUniqueRandomNumbers() {
+        int num;
+        int uniqueNum = 99;
+        bool unique = false;
+        while(!unique){
+            num = UnityEngine.Random.Range(0, uniqueNumbers.Length);
+            if(uniqueNumbers[num] != retry) {
+                uniqueNum = num;
+                uniqueNumbers[num] = retry;
+                unique = true;
+            }
+        }
+        
+        return uniqueNum;
+    }
+    
+    private Suspect assignSuspectImage(Suspect suspect) {
+        GameObject test = suspect.transform.GetComponent<GameObject>();
+        var suspectImage = suspect.transform.GetChild(0).gameObject.transform.GetChild(0);
+        suspectImage.transform.GetComponent<UnityEngine.UI.Image>().sprite = suspectImages[getUniqueRandomNumbers()];
+
+        return suspect;
     }
 
     public void Setup(List<SuspectData> suspectData, int currentScore, int allTimeScore)
     {
         foreach(var suspect in suspectData)
         {
+            suspectPrefab = assignSuspectImage(suspectPrefab);
             var instantiatedSuspect = Instantiate(suspectPrefab, suspectPanel.transform);
             suspects.Add(instantiatedSuspect);
             instantiatedSuspect.OnSelect += OnSuspectSelect;
