@@ -11,12 +11,6 @@ public class CardSpawner : MonoBehaviour
     [SerializeField]
     private int numCardCategories;
 
-    [SerializeField]
-    private const float MAGIC_LEFT_NUMBER = 142;
-    [SerializeField]
-    private const float MAGIC_RIGHT_NUMBER = 135;
-    private const float SCREEN_WIDTH = 1920;
-
     private bool spawning = true;
 
     [SerializeField]
@@ -28,8 +22,8 @@ public class CardSpawner : MonoBehaviour
 
         while (!GameManager.Instance.GameplayPaused)
         {
-            Vector3 maxPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(SCREEN_WIDTH - MAGIC_RIGHT_NUMBER, 0, 0));
-            Vector3 minPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(MAGIC_LEFT_NUMBER, 0, 0));
+            Vector3 maxPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.9f, 0, 0));
+            Vector3 minPointBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width * 0.1f, 0, 0));
             float randXPosition = Random.Range(minPointBounds.x, maxPointBounds.x);
             int randomCardCategory = Random.Range(0, numCardCategories);
             int randomCard = Random.Range(1, numCardCategories + 1);
