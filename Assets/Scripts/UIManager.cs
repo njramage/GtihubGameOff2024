@@ -53,6 +53,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text allTimeScoreText = null;
 
+    [SerializeField]
+    private AudioClip[] audioClips;
+
     private struct UIIndicators
     {
         private VisualElement locationIndicator;
@@ -266,6 +269,8 @@ public class UIManager : MonoBehaviour
             OnSelectNo();
             return;
         }
+
+        SoundFXManager.instance.PlayRandomSoundFxClip(audioClips, transform);
 
         selectedSuspect = suspectData;
         selectPanel?.SetActive(true);

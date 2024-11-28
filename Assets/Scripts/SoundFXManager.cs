@@ -29,6 +29,8 @@ public class SoundFXManager : MonoBehaviour
         audioSource.volume = volume;
         audioSource.Play();
 
+        Debug.Log("Played sound effect: " + audioSource.clip.name);
+
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
     }
