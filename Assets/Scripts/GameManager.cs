@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
     private void OnSuspectSelected(SuspectData suspectData)
     {
         GameplayPaused = true;
+        BackgroundMusic.Instance.StopBackgroundMusic();
 
         Debug.Log($"Selected suspect with " +
             $"Location: {suspectData.Location} " +
@@ -125,11 +126,18 @@ public class GameManager : MonoBehaviour
 
     private void PauseGameplay(bool gamePaused)
     {
+        if (gamePaused) {
+            BackgroundMusic.Instance.PauseBackgroundMusic();
+        } else {
+            BackgroundMusic.Instance.UnPauseBackgroundMusic();
+        }
+        
         GameplayPaused = gamePaused;
     }
 
     private void OnTimerEnd(float timeRemaining)
     {
+        BackgroundMusic.Instance.StopBackgroundMusic();
         finalTime = roundLengthSecs - timeRemaining;
         GameplayPaused = true;
 
