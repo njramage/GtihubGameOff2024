@@ -32,6 +32,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private Sprite cardSprite;
     private string cardName;
 
+    [SerializeField]
+    private AudioClip[] cardCombineSounds;
+
     public void Setup(Category category, int value, bool stopOnDrag = false)
     {
         switch (category)
@@ -96,6 +99,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             if (ray.gameObject != gameObject && ray.gameObject.CompareTag("Card"))
             {
+                SoundFXManager.instance.PlayRandomSoundFxClip(cardCombineSounds, gameObject.transform);
                 ray.gameObject.GetComponent<Card>().OnCardMerge();
                 OnCardMerge();
             }
