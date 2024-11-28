@@ -1694,6 +1694,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suspectPanel: {fileID: 3460672737469199548}
   suspectPrefab: {fileID: 4944118948287481208}
+  suspectImage1: {fileID: 3469147752972445127, guid: 1cf2a450b6fa54f328f93ddf73a280d1, type: 3}
+  suspectImage2: {fileID: 2821763820322377841, guid: d0edc3bc8674a4e42affa65e436f8903, type: 3}
+  suspectImage3: {fileID: -3246503724362725284, guid: e230f145fb3ae4ca4b4d30cc2bec179a, type: 3}
+  suspectImage4: {fileID: -1977755400711453527, guid: bba2b5b5d51ec4d9098bcd414c5778f3, type: 3}
+  suspectImage5: {fileID: 3230500153235733049, guid: 56baed2fa5861410b859941bd837a39f, type: 3}
+  suspectImage6: {fileID: -2031119952070262537, guid: 3daa3f9187d1e42c9b6f3e28281e0481, type: 3}
   selectPanel: {fileID: 7972510665810871260}
   pausePanel: {fileID: 2852632025943433328}
   timer: {fileID: 5005633065169457762}
@@ -3379,6 +3385,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -17.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: suspectImages.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 1cf2a450b6fa54f328f93ddf73a280d1, type: 3}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: d0edc3bc8674a4e42affa65e436f8903, type: 3}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: e230f145fb3ae4ca4b4d30cc2bec179a, type: 3}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: bba2b5b5d51ec4d9098bcd414c5778f3, type: 3}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 56baed2fa5861410b859941bd837a39f, type: 3}
+    - target: {fileID: 5420618986600482052, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
+      propertyPath: 'suspectImages.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 3daa3f9187d1e42c9b6f3e28281e0481, type: 3}
     - target: {fileID: 8310715819993833744, guid: 79e325dff22b6d7459bb6876ab3dd30a, type: 3}
       propertyPath: m_Name
       value: Suspect
