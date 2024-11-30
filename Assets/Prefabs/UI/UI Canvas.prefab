@@ -1706,6 +1706,10 @@ MonoBehaviour:
   prompt: {fileID: 1203068852351667308}
   currentScoreText: {fileID: 7876268923693703102}
   allTimeScoreText: {fileID: 4127000040078947882}
+  audioClips:
+  - {fileID: 8300000, guid: 04e62555d534a26e69e1e871416b11c2, type: 3}
+  - {fileID: 8300000, guid: 8bdf7fae01b737e56a4ae6939c41e689, type: 3}
+  - {fileID: 8300000, guid: dfae5e6f6d55ae42cafbb706402832b3, type: 3}
 --- !u!1 &6455081822513841658
 GameObject:
   m_ObjectHideFlags: 0
