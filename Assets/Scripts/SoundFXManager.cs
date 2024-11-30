@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SoundFXManager : MonoBehaviour
 {
@@ -20,13 +21,13 @@ public class SoundFXManager : MonoBehaviour
         }
     }
 
-    public void PlayRandomSoundFxClip(AudioClip[] soundFXs, Transform spawntransform)
+    public void PlayRandomSoundFxClip(AudioClip[] soundFXs, Transform spawntransform, float playVolume = 0)
     {
         AudioSource audioSource = Instantiate(soundFxObject, spawntransform.position, Quaternion.identity);
 
         int random = Random.Range(0, soundFXs.Length);
         audioSource.clip = soundFXs[random];
-        audioSource.volume = volume;
+        audioSource.volume = playVolume == 0 ? volume : playVolume;
         audioSource.Play();
 
         Debug.Log("Played sound effect: " + audioSource.clip.name);
