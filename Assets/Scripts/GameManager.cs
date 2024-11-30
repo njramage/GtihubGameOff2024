@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float roundLengthSecs = 60;
+
+    [SerializeField]
+    private AudioClip[] gameWinSounds;
     public string FinalTimeText
     {
         get
@@ -115,6 +118,7 @@ public class GameManager : MonoBehaviour
                 scoreManager.AllTimeHighScore = scoreManager.CurrentSessionScore;
             }
 
+            SoundFXManager.instance.PlayRandomSoundFxClip(gameWinSounds, transform);
             SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
         }
         else
