@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
     {
         GameplayPaused = true;
         BackgroundMusic.Instance.StopBackgroundMusic();
+        BackgroundMusic.Instance.OnGameFinish();
 
         Debug.Log($"Selected suspect with " +
             $"Location: {suspectData.Location} " +
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
 
         if (correctGuess)
         {
+            BackgroundMusic.Instance.OnGameFinish();
             scoreManager.CurrentSessionScore = scoreManager.CurrentSessionScore + 1;
             if (scoreManager.CurrentSessionScore > scoreManager.AllTimeHighScore)
             {

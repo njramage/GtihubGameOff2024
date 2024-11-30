@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -46,6 +47,9 @@ public class UIManager : MonoBehaviour
     private SuspectData selectedSuspect = null;
     private UIDocument correctRevealIndicatorPanel;
     private bool canPause = true;
+    [SerializeField]
+    private GameObject prisonCell;
+    
 
     [Header("Score")]
     [SerializeField]
@@ -221,6 +225,7 @@ public class UIManager : MonoBehaviour
             instantiatedSuspect.OnSelect += OnSuspectSelect;
             instantiatedSuspect.SetupData(suspect);
             instantiatedSuspect.gameObject.SetActive(true);
+            spawnPrisonCell();
         }
 
         GameManager.Instance.MergeEvent.AddListener(updateCorrectIndicators);
@@ -257,6 +262,11 @@ public class UIManager : MonoBehaviour
         {
             correctIndicators.showCorrectIndicator(Category.Feature);
         }
+    }
+
+    private void spawnPrisonCell() {
+        var cell = Instantiate(prisonCell, suspectPanel.transform);
+        cell.gameObject.SetActive(true);
     }
 
     private void OnSuspectSelect(SuspectData suspectData)

@@ -7,6 +7,10 @@ public class BackgroundMusic : MonoBehaviour
     private AudioClip background1;
     [SerializeField]
     private AudioClip background2;
+    [SerializeField]    
+    public AudioClip policeSiren;
+    [SerializeField]
+    public AudioClip metalCell;
     private AudioClip[] musicClips = new AudioClip[2];  // Array to store music clips
     public static BackgroundMusic Instance { get; private set; }
 
@@ -54,6 +58,14 @@ public class BackgroundMusic : MonoBehaviour
     }
 
     public void UnPauseBackgroundMusic() {
+        audioSource.Play();
+    }
+
+    public void OnGameFinish() {
+        audioSource.Stop();
+        audioSource.clip = policeSiren;
+        audioSource.Play();
+        audioSource.clip = metalCell;
         audioSource.Play();
     }
 }
