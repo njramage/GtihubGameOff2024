@@ -251,13 +251,33 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: gameWinSoundVolume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: gameOverSoundVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
       propertyPath: gameWinSounds.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: gameLoseSounds.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
       propertyPath: 'gameWinSounds.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 6dc905f946a2f5f1185f0f194de6b188, type: 3}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: 'gameLoseSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ff53142f2030184b9b4dfa9160e395d, type: 3}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: 'gameLoseSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c1f1cb6cd52992a7830842d74162989, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

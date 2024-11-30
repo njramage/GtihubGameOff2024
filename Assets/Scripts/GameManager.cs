@@ -25,8 +25,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip[] gameWinSounds;
+    [SerializeField, Range(0f, 1.0f)]
+    private float gameWinSoundVolume;
     [SerializeField]
-    private AudioClip[] gameLoseSounds;
+    private AudioClip[] gameOverSounds;
+    [SerializeField, Range(0f, 1.0f)]
+    private float gameOverSoundVolume;
     public string FinalTimeText
     {
         get
@@ -120,13 +124,13 @@ public class GameManager : MonoBehaviour
                 scoreManager.AllTimeHighScore = scoreManager.CurrentSessionScore;
             }
 
-            SoundFXManager.instance.PlayRandomSoundFxClip(gameWinSounds, transform, 0.3f);
+            SoundFXManager.instance.PlayRandomSoundFxClip(gameWinSounds, transform, gameWinSoundVolume);
             SceneManager.LoadScene("GameWin", LoadSceneMode.Additive);
         }
         else
         {
             scoreManager.CurrentSessionScore = 0;
-            SoundFXManager.instance.PlayRandomSoundFxClip(gameLoseSounds, transform, 0.5f);
+            SoundFXManager.instance.PlayRandomSoundFxClip(gameOverSounds, transform, gameOverSoundVolume);
             SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
         }
     }
