@@ -85,6 +85,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (GameManager.Instance.GameplayPaused)
+        {
+            return;
+        }
+
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.parent.position.z;
         transform.position = mousePosition;
@@ -92,6 +97,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (GameManager.Instance.GameplayPaused)
+        {
+            return;
+        }
+
         transform.SetParent(parentAfterDragging);
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);

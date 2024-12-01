@@ -2,8 +2,8 @@
     <Style src="project://database/Assets/UI/MainStyleSheet.uss?fileID=7433441132597879392&amp;guid=62ff74d9d74bc03e0adf60730ea3809f&amp;type=3#MainStyleSheet" />
     <engine:VisualElement name="Panel" style="flex-grow: 1;">
         <engine:VisualElement name="Container" class="container" style="flex-grow: 1; align-self: center; justify-content: center; align-items: flex-end; align-content: auto; max-height: 150px; opacity: 1; top: 40%; background-color: rgba(0, 0, 0, 0.64);">
-            <engine:Label text="Game Over" name="Header" class="header" />
-            <engine:Button text="Play again" name="PlayAgainButton" class="button" style="width: 220px; height: 60px; align-self: center; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&quot;);" />
+            <engine:Label text="Game Over" name="Header" class="header" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Film%20Noir.ttf?fileID=12800000&amp;guid=7c5c62459900e5945a797d2123ca0086&amp;type=3#Film Noir&quot;);" />
+            <engine:Button text="Play again" name="PlayAgainButton" class="button" style="width: 220px; height: 60px; align-self: center; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Film%20Noir.ttf?fileID=12800000&amp;guid=7c5c62459900e5945a797d2123ca0086&amp;type=3#Film Noir&quot;); -unity-text-align: lower-center;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

@@ -251,65 +251,23 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: gameWinSoundVolume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: gameOverSoundVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
       propertyPath: gameWinSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: gameLoseSounds.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: 'gameWinSounds.Array.data[0]'
+      propertyPath: 'gameWinSounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 6dc905f946a2f5f1185f0f194de6b188, type: 3}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: 'gameLoseSounds.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 7ff53142f2030184b9b4dfa9160e395d, type: 3}
-    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      propertyPath: 'gameLoseSounds.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 3c1f1cb6cd52992a7830842d74162989, type: 3}
+      objectReference: {fileID: 8300000, guid: 7bf1a8ba1b3dee441819553d6756781c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6482502370203644449, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 497593486}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
 --- !u!224 &392321523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7780719296046817346, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
   m_PrefabInstance: {fileID: 7427357913987680830}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &497593485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6482502370203644449, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
-  m_PrefabInstance: {fileID: 339521105}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &497593486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497593485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829d1feb88ef8ea2b914a1a7ea2d285c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundFxObject: {fileID: 717854808039517299, guid: 3d746471781addba38c7dad0629f53fd, type: 3}
-  volume: 0.196
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +801,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -984,14 +942,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555978141}
     m_Modifications:
-    - target: {fileID: 1176097234218754422, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
-      propertyPath: stopOnDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176097234218754422, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
-      propertyPath: timeBewteenSpawnSec
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7576770960651550856, guid: 8f9948cb87bee60f1a37b02fc0c77fbb, type: 3}
       propertyPath: m_Name
       value: CardSpawner

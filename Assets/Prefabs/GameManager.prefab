@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4486036164221246664}
   - component: {fileID: 8873979646028287111}
   - component: {fileID: 5595598500109461754}
+  - component: {fileID: 6141085903532153188}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,6 +52,13 @@ MonoBehaviour:
   uiManagerPrefab: {fileID: 9112603903858948861, guid: d7d5cb81aa471d147ab17b15f72ec81f, type: 3}
   numberOfSuspects: 6
   roundLengthSecs: 60
+  gameWinSounds:
+  - {fileID: 8300000, guid: 6dc905f946a2f5f1185f0f194de6b188, type: 3}
+  gameWinSoundVolume: 0.3
+  gameOverSounds:
+  - {fileID: 8300000, guid: 7ff53142f2030184b9b4dfa9160e395d, type: 3}
+  - {fileID: 8300000, guid: 3c1f1cb6cd52992a7830842d74162989, type: 3}
+  gameOverSoundVolume: 0.5
 --- !u!114 &5595598500109461754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,3 +78,17 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+--- !u!114 &6141085903532153188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482502370203644449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829d1feb88ef8ea2b914a1a7ea2d285c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFxObject: {fileID: 717854808039517299, guid: 3d746471781addba38c7dad0629f53fd, type: 3}
+  volume: 0.196
