@@ -250,6 +250,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: gameWinSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873979646028287111, guid: 8f7f9065485d1d6489a9112d230e3100, type: 3}
+      propertyPath: 'gameWinSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bf1a8ba1b3dee441819553d6756781c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
